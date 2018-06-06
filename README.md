@@ -1,4 +1,4 @@
-# TC-Casino
+# ZCW-Casino
 * Objective:
   * To create a casino simulation.
 
