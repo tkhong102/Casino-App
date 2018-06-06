@@ -9,7 +9,6 @@
   * Craps a dice game
 
 ## Specs
-* This repo contains a [UML](https://github.com/Zipcoder/CR-MacroLabs-OOP-Casino/blob/master/UML.pdf) to help get you started.
 * The project should include some concept of
   * `Player` class
     * `Player` objects should be created upon input from a user.
