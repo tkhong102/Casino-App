@@ -5,8 +5,6 @@ public class Player {
     private String name = "";
     private long chipBalance;
 
-    private CardHand hand;
-
     public Player(String name, long startingBalance) {
         this.name = name;
         this.chipBalance = startingBalance;
@@ -15,14 +13,6 @@ public class Player {
     public Player(String name) {
         this.name = name;
         this.chipBalance = 500;
-    }
-
-    public CardHand getHand() {
-        return hand;
-    }
-
-    public void setHand(CardHand hand) {
-        this.hand = hand;
     }
 
     public String getName() {

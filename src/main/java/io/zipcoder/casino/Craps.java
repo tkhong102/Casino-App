@@ -1,7 +1,17 @@
 package io.zipcoder.casino;
 
-public class Craps extends DiceGame implements Gamble {
+import java.util.ArrayList;
 
+public class Craps extends DiceGame implements Gamble {
+    private ArrayList<CrapsPlayer> crapsPlayers = new ArrayList<>();
+
+    public Craps(){
+        readyPlayers();
+    }
+
+    public void readyPlayers() {
+        crapsPlayers.addAll(Players.getInstance().playerList);
+    }
 
     public void placeBet() {
 

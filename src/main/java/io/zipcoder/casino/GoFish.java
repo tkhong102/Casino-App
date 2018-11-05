@@ -1,6 +1,18 @@
 package io.zipcoder.casino;
 
+import java.util.ArrayList;
+
 public class GoFish extends CardGame {
+
+    private ArrayList<GoFishPlayer> goFishPlayers = new ArrayList<>();
+
+    public GoFish(){
+        readyPlayers();
+    }
+
+    public void readyPlayers() {
+        goFishPlayers.addAll(Players.getInstance().playerList);
+    }
 
     int setsCount;
 
