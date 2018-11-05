@@ -1,7 +1,13 @@
 package io.zipcoder.casino;
 
 public class DiceGame extends Game {
-    public void pickBet() {
+    private Dice dice = new Dice();
+
+    public void rollDie() {
+
+    }
+
+    public void getSum() {
 
     }
 }

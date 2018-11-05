@@ -3,16 +3,26 @@ package io.zipcoder.casino;
 public class Player {
 
     private String name = "";
-    private long balance;
+    private long chipBalance;
+
+    private CardHand hand;
 
     public Player(String name, long startingBalance) {
         this.name = name;
-        this.balance = startingBalance;
+        this.chipBalance = startingBalance;
     }
 
     public Player(String name) {
         this.name = name;
-        this.balance = 500;
+        this.chipBalance = 500;
+    }
+
+    public CardHand getHand() {
+        return hand;
+    }
+
+    public void setHand(CardHand hand) {
+        this.hand = hand;
     }
 
     public String getName() {
@@ -23,11 +33,11 @@ public class Player {
         this.name = name;
     }
 
-    public long getBalance() {
-        return balance;
+    public long getChipBalance() {
+        return chipBalance;
     }
 
-    public void setBalance(long balance) {
-        this.balance = balance;
+    public void setChipBalance(long chipBalance) {
+        this.chipBalance = chipBalance;
     }
 }

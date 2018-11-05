@@ -1,16 +1,21 @@
 package io.zipcoder.casino;
 
-public class Craps extends DiceGame
-{
-    public void pass() {
+public class Craps extends DiceGame implements Gamble {
+
+
+    public void placeBet() {
+
     }
 
-    public void dontPass() {
+    public void evaluateRoll() {
+
     }
 
-    public void come() {
+    public void winBet() {
+
     }
 
-    public void dontCome() {
+    public void loseBet() {
+
     }
 }

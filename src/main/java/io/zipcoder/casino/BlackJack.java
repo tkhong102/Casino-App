@@ -1,19 +1,26 @@
 package io.zipcoder.casino;
 
-public class BlackJack extends CardGame {
-    public void hit() {
+public class BlackJack extends CardGame implements Gamble {
+    private Deck deck = new Deck();
+
+
+    public void dealCards(Player player, int numberOfCards) {
 
     }
 
-    public void stay() {
+    public void revealCard() {
 
     }
 
-    public void doubleDown() {
+    public void placeBet() {
 
     }
 
-    public void split() {
+    public void winBet() {
+
+    }
+
+    public void loseBet() {
 
     }
 }
