@@ -1,6 +1,7 @@
 package io.zipcoder.casino;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Craps extends DiceGame implements Gamble {
 
