@@ -1,4 +1,4 @@
-package io.zipcoder.casino;
+package io.zipcoder.casino.cardgames.cards;
 
 public class CardHand {
 
@@ -8,7 +8,6 @@ public class CardHand {
     public CardHand(int numberOfCards) {
         this.numberOfCards = numberOfCards;
     }
-
 
     public CardHand() {
     }

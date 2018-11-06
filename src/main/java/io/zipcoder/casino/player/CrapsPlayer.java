@@ -1,4 +1,4 @@
-package io.zipcoder.casino;
+package io.zipcoder.casino.player;
 
 public class CrapsPlayer {
     Player crapsPlayer;
@@ -11,6 +11,10 @@ public class CrapsPlayer {
     public CrapsPlayer(Player player, long bet) {
         this.crapsPlayer = player;
         this.bet = bet;
+    }
+
+    public Player getP() {
+        return crapsPlayer;
     }
 
     public long getBet() {

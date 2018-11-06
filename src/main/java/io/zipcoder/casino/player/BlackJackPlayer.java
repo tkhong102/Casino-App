@@ -1,6 +1,6 @@
-package io.zipcoder.casino;
+package io.zipcoder.casino.player;
 
-import java.util.ArrayList;
+import io.zipcoder.casino.cardgames.cards.CardHand;
 
 public class BlackJackPlayer {
     private CardHand hand;
@@ -15,6 +15,10 @@ public class BlackJackPlayer {
     }
 
     public void stay(Player player) {
+    }
+
+    public Player getP() {
+        return blackJackPlayer;
     }
 
     public CardHand getHand() {
