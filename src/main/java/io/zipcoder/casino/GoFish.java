@@ -16,24 +16,40 @@ public class GoFish extends CardGame {
 
     int setsCount;
 
-    @Override
-    void dealCards(Player player, int numberOfCards) {              //not sure if we should be taking in an int
-        super.dealCards(player, numberOfCards);                     // of cards as a param. Maybe save that for
-            if (goFishPlayers.size() <= 3) {                        // if/else statement to determine #ofcards??
-                numberOfCards = 7;                                  // or initialize numberOfCards as 0 before?
-            } else {
-                numberOfCards = 5;
-            }
-        //RULES: For 3 players or less, deal each player 7 cards; If more than three players, deal 5 cards each.
+    public int getNumberOfCards() {      //generate numberOfCards param for below based on number of players
+        int numberOfCards;
+        if (goFishPlayers.size() <= 3) {
+            numberOfCards = 7;
+        } else {
+            numberOfCards = 5;
+        }
+        return numberOfCards;
     }
 
-    //while (Deck.cards(?) > 0) {
+    @Override
+    void dealCards(Player player, int numberOfCards) {
+        super.dealCards(player, numberOfCards);
+
+        //RULES: For 3 players or less, deal each player 7 cards; If more than three players, deal 5 cards each.
+    }
+public
+    //while (drawPile > 0) {
     public void questionPlayer(String cardRank, Player player) {
-        //start w player
-        //askFishQuestion(); Prompt w/ question of who to ask [console output?]
-        //take userInput [console input?]
-        //Prompt w/question of what card (rank) to look for [console output?]
-        //take userInput[console input?]
+        //start w/ player
+        //for (deck.size aka (52 cards - numOfCards per player))
+            //askPlayerQuestion(); Prompt w/ question of who to ask [console output?]
+            //take userInput [console input?]
+            //askPlayerCard(); Prompt w/question of what card (rank) to look for [console output?]
+            //take userInput[console input?]
+                //for cardHand(chosen player)
+                    //evalCards(userInput): If userInput.equals(card[i].cardGetValue)
+                                                     //swap();
+                                                    //repeat until userInput != cardGetValue
+                                                    //else
+                                                         //goFish(); draw a card from Deck - (deck - 1)
+                                                        //move to next player;
+        //checkSets: run through each cardHand and looks for 4 of a kind;
+                //if found, setsCount++;
 
     }
 
