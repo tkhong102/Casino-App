@@ -29,6 +29,12 @@ public class Players<Player> {
     public void addPlayer(Player player) {
         playerList.add(player);
     }
+    public void addPlayers(Player ... players) {
+        for (Player player : players) {
+            playerList.add(player);
+        }
+    }
+
 
     public void removePlayer(final Player player) {
         playerList.removeIf(Player -> Player.equals(player));
