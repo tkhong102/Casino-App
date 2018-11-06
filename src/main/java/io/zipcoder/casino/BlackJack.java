@@ -63,31 +63,29 @@ public class BlackJack extends CardGame implements Gamble {
         return blackJackPlayer.getChipBalance() - currentBet;
     }
 
-    public void evaluateBet(){
 
-    }
-
-    public void getSum(ArrayList<CardHand> cardHands){
+    public void getSum(ArrayList<CardHand> cardHands) {
         int cardSum = 0;
         boolean ace = false;
 
         for (int i = 0; i < cardHands.size(); i++) {
             int cardValue = cardHands.getCardValue(i);
 
-            if (cardValue > 10)
-            {
+            if (cardValue > 10) {
                 cardValue = 10;   // For a Jack, Queen, or King.
             }
-            if (cardValue == 1)
-            {
+            if (cardValue == 1) {
                 ace = true;
             }
             cardSum = cardSum + cardValue;
         }
-        if (ace == true && cardSum + 10 <= 21)
-        {
+        if (ace == true && cardSum + 10 <= 21) {
             cardSum = cardSum + 10;
         }
+
+    }
+
+    public void evaluateBet(BlackJackPlayer player, long payout){
 
     }
 

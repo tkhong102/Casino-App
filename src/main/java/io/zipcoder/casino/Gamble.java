@@ -1,7 +1,7 @@
 package io.zipcoder.casino;
 
 public interface Gamble {
-    long placeBet(long chips);
+    public void placeBet();
 
-    void evaluateBet();
+    void evaluateBet(Player player, long payout);
 }
