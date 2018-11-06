@@ -27,11 +27,7 @@ public class BlackJack extends CardGame implements Gamble {
 
     }
 
-    public void winBet() {
-
-    }
-
-    public void loseBet() {
-
+    public void evaluateBet(Player player, long payout){
+        
     }
 }
