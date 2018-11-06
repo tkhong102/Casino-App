@@ -7,7 +7,7 @@ public class Casino {
     public void main() {
     }
 
-    public Players<Player> enterPlayers() {
+    public Players enterPlayers() {
         return null;
     }
 
@@ -23,6 +23,10 @@ public class Casino {
     }
 
     public void printBalance() {
+    }
+
+    public static void main(String[] args) {
+        System.out.println("Hello");
     }
 
 }
