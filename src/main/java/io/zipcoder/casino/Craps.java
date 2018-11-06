@@ -15,9 +15,7 @@ public class Craps extends DiceGame implements Gamble {
     }
 
     public void placeBet() {
-        System.out.println("How much money do you want to bet");
-        Scanner mBet=new Scanner(System.in);
-        int chipBet=mBet.nextInt();
+
     }
 
     public void evaluateRoll() {
