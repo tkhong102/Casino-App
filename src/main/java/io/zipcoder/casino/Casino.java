@@ -25,4 +25,8 @@ public class Casino {
     public void printBalance() {
     }
 
+    public static void main(String[] args) {
+        System.out.println("Hello");
+    }
+
 }
