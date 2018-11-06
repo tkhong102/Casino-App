@@ -1,17 +1,15 @@
 package io.zipcoder.casino;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Craps extends DiceGame implements Gamble {
 
-    Scanner stdin = new Scanner(System.in);
-
     private ArrayList<CrapsPlayer> crapsPlayers = new ArrayList<>();
-    int bet = 1;
+    long bet;
 
     public Craps() {
         readyPlayers();
+        placeBet();
         run();
     }
     //for test purposes
@@ -24,33 +22,23 @@ public class Craps extends DiceGame implements Gamble {
         crapsPlayers.addAll(Players.getInstance().playerList);
     }
 
-
     public void run(){
         for(int i = 0; i < crapsPlayers.size(); i++){
-            play(crapsPlayers.get(i));
+            play(crapsPlayers.get(i),crapsPlayers.get(i).getBet());
         }
     }
 
-
-
-    public int placeBet() {
-        //call console function
-         System.out.println("How much do you want to bet? ");
-         bet = stdin.nextInt();
-         return bet;
+    public void placeBet() {
+        bet = 5;
     }
-
-//    public void evaluateRoll() {
-//
-//    }
 
     public void evaluateBet(Player player, long payout) {
-        player.setChipBalance(payout);
+        player.setChipBalance(player.getChipBalance()+payout);
     }
 
-    public void play(CrapsPlayer currentPlayer) {
+    public void play(CrapsPlayer currentPlayer, long bet) {
 
-       bet = placeBet();
+        this.bet = bet;
 
         int sum = rollDie(2); // roll two dice, store sum in sum field.
 
@@ -71,11 +59,9 @@ public class Craps extends DiceGame implements Gamble {
         }
     }
 
-
     public void print(){
         for(int i = 0; i < crapsPlayers.size(); i++){
             System.out.println(crapsPlayers.get(i).crapsPlayer.getChipBalance());
         }
     }
-
 }
