@@ -2,7 +2,7 @@ package io.zipcoder.casino;
 
 
 public class Casino {
-    private Game game = Game;
+    private Game game;
 
     public void main() {
     }
@@ -23,6 +23,10 @@ public class Casino {
     }
 
     public void printBalance() {
+    }
+
+    public static void main(String[] args) {
+        System.out.println("Hello");
     }
 
 }
