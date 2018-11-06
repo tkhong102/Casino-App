@@ -1,5 +1,6 @@
 package io.zipcoder.casino;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -21,12 +22,12 @@ public class PlayersTest {
 
     @Test
     public void addPlayer() {
-//        ArrayList<Player> players = Players.getInstance().playerList;
-        for (Player player : Players.getInstance().playerList)
-        System.out.println(Players.getInstance().playerList);
+        Assert.assertTrue(Players.getInstance().playerList.size() == 3);
     }
 
     @Test
     public void removePlayer() {
+        Players.getInstance().removePlayer(player1);
+        Assert.assertTrue(Players.getInstance().playerList.size() == 2);
     }
 }

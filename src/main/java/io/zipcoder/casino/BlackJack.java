@@ -11,9 +11,10 @@ public class BlackJack extends CardGame implements Gamble {
     }
 
     public void readyPlayers() {
-        blackJackPlayers.addAll(Players.getInstance().playerList);
+        for (Player player : Players.getInstance().playerList) {
+            blackJackPlayers.add(new BlackJackPlayer(player));
+        }
     }
-
     public void dealCards(Player player, int numberOfCards) {
 
     }
