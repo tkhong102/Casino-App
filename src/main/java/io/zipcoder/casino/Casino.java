@@ -7,7 +7,7 @@ public class Casino {
     public void main() {
     }
 
-    public Players<Player> enterPlayers() {
+    public Players enterPlayers() {
         return null;
     }
 

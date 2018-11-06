@@ -5,8 +5,12 @@ package io.zipcoder.casino;
     public class Dice {
         public int dieCount;
 
+        Dice(){ this.dieCount = 1; }
         Dice(int dieCount) {
             this.dieCount = dieCount;
+        }
+        Dice() {
+            this.dieCount = 1;
         }
 
         public int tossAndSum() {
