@@ -10,7 +10,9 @@ public class Craps extends DiceGame implements Gamble {
     }
 
     public void readyPlayers() {
-        crapsPlayers.addAll(Players.getInstance().playerList);
+        for (Player player : Players.getInstance().playerList) {
+            crapsPlayers.add(new CrapsPlayer(player));
+        }
     }
 
     public void placeBet() {
