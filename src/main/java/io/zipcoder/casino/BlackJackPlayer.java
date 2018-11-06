@@ -2,10 +2,13 @@ package io.zipcoder.casino;
 
 import java.util.ArrayList;
 
-public class BlackJackPlayer {
+public class BlackJackPlayer extends Player{
     private CardHand hand;
 
     Player blackJackPlayer;
+
+    public BlackJackPlayer() {
+    }
 
     public BlackJackPlayer(Player player) {
         this.blackJackPlayer = player;

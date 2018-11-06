@@ -1,13 +1,16 @@
 package io.zipcoder.casino;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Vector;
 
 public class BlackJack extends CardGame implements Gamble {
+    long upcardsValue = 0;
+
     private Deck deck = new Deck();
     private ArrayList<BlackJackPlayer> blackJackPlayers = new ArrayList<>();
-    private Vector cardHands;
-    private Vector dealerHands;
+    BlackJackPlayer blackJackPlayer = new BlackJackPlayer();
+    ArrayList<CardHand> cardHands;
 
     public BlackJack(){
         readyPlayers();
@@ -20,34 +23,56 @@ public class BlackJack extends CardGame implements Gamble {
     }
 
     public void dealCards(BlackJackPlayer player, int numberOfCards) {
-        for(BlackJackPlayer p: blackJackPlayers){
+        dealerHand.cardHand.add(); //deals 2 cards for dealer
+
+        for(BlackJackPlayer p: blackJackPlayers){ //deal 2 cards to each player
             super.dealCards(p, 2);
         }
     }
 
-    public void revealCard(ArrayList<CardHand> cardHands) {
+    public void drawCard() {
+        // draws card from deck and adds it to "upcard" total
+        dealerHand.cardHand.add(deck.deckOfCards.get(0));
+        deck.deckOfCards.remove(0);
+
+        upcardsValue += dealerHand.cardHand.(0);
+//        System.out.println("You have the following cards");
+//        for(CardHand c:cardHands){
+//            System.out.println(c);
+//        }
+    }
+
+    public void evaluateDealerHand() {
+        int cardSum = 0;
+        boolean ace = false;
+
+        for (Card card : dealerHand) {
+            cardSum += card.getCardValue;
+        }
+
+        if (cardSum < 17) {
+            drawCard();
+        } else if (cardSum > 21) {
+//            currentPlayer.win <- WE WILL FIGURE THIS PART OUT LATER
+        } else {
+            //player has opportunity to hit or stay
+        }
+    }
+
+    public long placeBet(long currentBet) {
+        return blackJackPlayer.getChipBalance() - currentBet;
+    }
+
+    public void evaluateBet(){
 
     }
 
-    public void placeBet() {
-
-    }
-
-    public void winBet() {
-
-    }
-
-    public void loseBet() {
-
-    }
-
-    public int getValue(ArrayList<CardHand> cardHands){
-        int value = 0;
+    public void getSum(ArrayList<CardHand> cardHands){
+        int cardSum = 0;
         boolean ace = false;
 
         for (int i = 0; i < cardHands.size(); i++) {
-            int cardValue;
-            cardValue = cardHands.get(i);
+            int cardValue = cardHands.getCardValue(i);
 
             if (cardValue > 10)
             {
@@ -55,27 +80,53 @@ public class BlackJack extends CardGame implements Gamble {
             }
             if (cardValue == 1)
             {
-                ace = true;     // There is at least one ace.
+                ace = true;
             }
-            value = value + cardValue;
+            cardSum = cardSum + cardValue;
         }
-        if (ace == true && value + 10 <= 21)
+        if (ace == true && cardSum + 10 <= 21)
         {
-            value = value + 10;
+            cardSum = cardSum + 10;
         }
-        return value;
 
     }
 
+    public int revealCard(CardHand cardHand, int index){
+        return cardHand.getCardValue(index);
+    }
 
-    public int getCard(Vector cardHands, int position) {
-        if (position >= 0 && position < cardHands.size())
-        {
-            return ((Integer)cardHands.elementAt(position)).intValue();
-        } else
-        {
-            return 0;
+    public void evaluatePlayerHand(){
+
+        while (true){
+            System.out.println("You have:");
+            for (int i = 0; i < cardHands.size(); i++) {
+                System.out.println(" " + revealCard(cardHand, i));
+            }
+            System.out.println("The dealer is showing a " + revealCard(dealerHand,0));
+            System.out.println("Would you like to Hit (H) or Stand (S)?");
+        }
+        // print player's cardHands and sum
+        //if player has blackjack (ace + face)
+        //show dealer's card, player win or tie?
+
+        //while player's sum is <21
+        //prompt player to "Stand" or "Hit"
+
+
+
+
+    }
+
+    public void run(){
+        boolean quit = false;
+        while (quit == false) {
+            drawCard();
+
+
+
+            // at the end of each loop, ask players if they would like to continue
         }
     }
+
 
 }

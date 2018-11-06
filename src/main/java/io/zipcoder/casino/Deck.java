@@ -4,7 +4,7 @@ public class Deck {
 
     int numberOfDecks;
     private Card card;
-    private java.util.ArrayList<Card> deckOfCards;
+    protected java.util.ArrayList<Card> deckOfCards;
 
     public Deck() {
         this.numberOfDecks = 1;
