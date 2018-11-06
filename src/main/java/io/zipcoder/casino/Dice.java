@@ -8,6 +8,9 @@ package io.zipcoder.casino;
         Dice(int dieCount) {
             this.dieCount = dieCount;
         }
+        Dice() {
+            this.dieCount = 1;
+        }
 
         public int tossAndSum() {
             Random random = new Random();

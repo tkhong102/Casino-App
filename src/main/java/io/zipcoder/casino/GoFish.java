@@ -11,7 +11,9 @@ public class GoFish extends CardGame {
     }
 
     public void readyPlayers() {
-        goFishPlayers.addAll(Players.getInstance().playerList);
+        for (Player player : Players.getInstance().playerList) {
+            goFishPlayers.add(new GoFishPlayer(player));
+        }
     }
 
     int setsCount;

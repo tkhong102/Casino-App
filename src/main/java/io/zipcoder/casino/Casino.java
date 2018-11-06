@@ -2,12 +2,12 @@ package io.zipcoder.casino;
 
 
 public class Casino {
-    private Game game = Game;
+    private Game game;
 
     public void main() {
     }
 
-    public Players<Player> enterPlayers() {
+    public Players enterPlayers() {
         return null;
     }
 
