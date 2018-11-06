@@ -24,7 +24,7 @@ public class BlackJack extends CardGame implements Gamble {
     }
 
     public void revealCard(ArrayList<CardHand> cardHands) {
-        
+
     }
 
     public void placeBet() {
