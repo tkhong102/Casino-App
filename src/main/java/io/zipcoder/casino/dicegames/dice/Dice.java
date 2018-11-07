@@ -5,10 +5,11 @@ package io.zipcoder.casino.dicegames.dice;
     public class Dice {
         public int dieCount;
 
-        Dice(int dieCount) {
+        public Dice(int dieCount) {
             this.dieCount = dieCount;
         }
-        Dice() {
+
+        public Dice() {
             this.dieCount = 1;
         }
 
