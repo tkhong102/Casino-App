@@ -132,8 +132,8 @@ public class BlackJack extends CardGame implements Gamble {
 
     public Card drawCard() {
         // draws card from deck and adds it to "upcard" total
-        Card card = dealerHand.getCard(deck.);
-        deck.remove(0);
+        Card card = dealerHand.add(deck.getFirst());
+        deck.removeFirst();
 
         return card;
     }
@@ -144,7 +144,7 @@ public class BlackJack extends CardGame implements Gamble {
         boolean ace = false;
 
         for (int i = 0; i < cardHands.size(); i++) {
-            int cardValue = cardHands.getCardValue(i);
+            int cardValue = cardHands.get(i).getCardValue();
 
             if (cardValue > 10) {
                 cardValue = 10;   // For a Jack, Queen, or King.
