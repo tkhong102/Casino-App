@@ -24,7 +24,6 @@ public class BlackJack extends CardGame implements Gamble {
 
 
     public BlackJack(){
-
         readyPlayers();
         placeBet();
         run();
@@ -49,21 +48,21 @@ public class BlackJack extends CardGame implements Gamble {
         dealCards(currentPlayer, 2);
 
         if (getSum(dealerHand) == 21){
-            Console.println("Dealer has " + dealerHand.getCard(0)) + " and " + dealerHand.getCard(1);
-            Console.println(("You have " + playerHand.getCard(0)) + " and " + playerHand.getCard(1));
+            Console.println("Dealer has +," +  dealerHand.getCard(0) + " and " + dealerHand.getCard(1));
+            Console.println("You have " + playerHand.getCard(0) + " and " + playerHand.getCard(1));
             Console.println("Dealer wins.");
         }
 
         if (getSum(playerHand) == 21){
-            Console.println("Dealer has " + dealerHand.getCard(0)) + " and " + dealerHand.getCard(1));
-            Console.println(("You have " + playerHand.getCard(0)) + " and " + playerHand.getCard(1));
+            Console.println("Dealer has " + dealerHand.getCard(0) + " and " + dealerHand.getCard(1));
+            Console.println("You have " + playerHand.getCard(0) + " and " + playerHand.getCard(1));
             Console.println("You wins.");
         }
 
         while(true) {
 
             Console.println("You have: ");
-            for (int i = 0; i < playerHand.size(); i++) {
+            for (int i = 0; i < playerHand.getSize(); i++) {
                 Console.println(" " + playerHand.getCard(i);
             }
             Console.println("Dealer is showing a " + dealerHand.getCard(0));
@@ -75,19 +74,19 @@ public class BlackJack extends CardGame implements Gamble {
             } else if (hitOrStand.equals("S")){
                 break;
             }else {
-                String hitOrStand = Console.getStringInput("Invalid input. Please enter H for Hit or S for Stand");
+                hitOrStand = Console.getStringInput("Invalid input. Please enter H for Hit or S for Stand");
             }
             Console.println("You have: ");
-                for (int i = 0; i < playerHand.size(); i++) {
+                for (int i = 0; i < playerHand.getSize(); i++) {
                     Console.println(" " + playerHand.getCard(i));
                 }
-                String hitOrStand = Console.getStringInput("Do you want to Hit or Stand? \n Enter H for Hit or S for Stand");
+                hitOrStand = Console.getStringInput("Do you want to Hit or Stand? \n Enter H for Hit or S for Stand");
                 }
                 return false;
             }
 
             Console.println("Dealer's card are: ");
-            for (int i = 0; i < dealerHand.size(); i++) {
+            for (int i = 0; i < dealerHand.getSize(); i++) {
             Console.println(" " + dealerHand.getCard(i));
             }
             while (getSum(dealerHand) < 17) {
@@ -122,7 +121,6 @@ public class BlackJack extends CardGame implements Gamble {
     }
 
     public void placeBet() {
-
         bet = Console.getLongInput("Please enter your bet.");
     }
 
@@ -134,27 +132,10 @@ public class BlackJack extends CardGame implements Gamble {
 
     public Card drawCard() {
         // draws card from deck and adds it to "upcard" total
-        Card card = dealerHand.add(deck.deckOfCards.get(0));
-        deck.deckOfCards.remove(0);
+        Card card = dealerHand.getCard(deck.);
+        deck.remove(0);
 
         return card;
-    }
-
-    public void evaluateDealerHand() {
-        int cardSum = 0;
-        boolean ace = false;
-
-        for (Card card : dealerHand) {
-            cardSum += card.getCardValue;
-        }
-
-        if (cardSum < 17) {
-            drawCard();
-        } else if (cardSum > 21) {
-//            currentPlayer.win <- WE WILL FIGURE THIS PART OUT LATER
-        } else {
-            //player has opportunity to hit or stay
-        }
     }
 
 

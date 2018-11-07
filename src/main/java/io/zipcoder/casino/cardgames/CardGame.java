@@ -8,7 +8,6 @@ import io.zipcoder.casino.player.Player;
 public class CardGame extends Game {
 
     Deck deck = new Deck();
-    CardHand dealerHand = new CardHand();
 
     void dealCards(Player player, int numberOfCards) {
 
