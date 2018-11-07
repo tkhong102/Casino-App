@@ -9,6 +9,7 @@ public class BlackJackPlayer {
 
     public BlackJackPlayer(Player player) {
         this.blackJackPlayer = player;
+        this.hand = new CardHand();
     }
 
     public void hit(Player player) {
