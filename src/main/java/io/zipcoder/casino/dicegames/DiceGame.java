@@ -4,6 +4,7 @@ import io.zipcoder.casino.dicegames.dice.Dice;
 import io.zipcoder.casino.utilities.Game;
 
 public class DiceGame extends Game {
+
     private Dice dice = new Dice(1);
 
     public void rollDie() {

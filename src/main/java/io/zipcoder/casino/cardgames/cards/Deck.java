@@ -1,29 +1,34 @@
 package io.zipcoder.casino.cardgames.cards;
 
+import io.zipcoder.casino.utilities.Console;
+
+
+import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Deque;
 
-    public class Deck {
-
-    private ArrayList<Card> deck;
+public class Deck extends ArrayDeque<Card> {
+    // private ArrayList<Card> deck;
 
     public Deck(){
-        this.deck = new ArrayList();
+        // this.deck = new ArrayList();
         for (int i = 0; i < 13; i++){
             CardValue value = CardValue.values()[i];
 
             for (int j =0; j < 4;j++){
                 Card card = new Card (value, CardSuit.values()[j]);
-                this.deck.add(card);
+                addFirst(card);
             }
         }
 
 //        Collections.shuffle(deck);
 
-        for (Card aCard : deck) {
+        for (Card aCard : this) {
             Card oneCard = aCard;
 
-            System.out.println(oneCard.getCardValue() + " of " + oneCard.getSuit());
+            Console.println(oneCard.getCardValue() + " of " + oneCard.getSuit());
 //            CardValue.values();
+
         }
     }
 
@@ -33,7 +38,9 @@ import java.util.ArrayList;
 //            System.out.println(value.getCardValue());
 //        }
         Deck deck = new Deck();
-        for (Card card : deck.deck) {
+        int cardCount = 0;
+        for (Card card : deck) {
+            cardCount++;
 //            System.out.println(card.getCardValue() + " " + card.getSuit());
         }
 
