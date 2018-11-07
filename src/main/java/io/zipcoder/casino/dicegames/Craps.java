@@ -1,5 +1,6 @@
 package io.zipcoder.casino.dicegames;
 
+import io.zipcoder.casino.utilities.Console;
 import io.zipcoder.casino.utilities.Gamble;
 import io.zipcoder.casino.player.CrapsPlayer;
 import io.zipcoder.casino.player.Player;
@@ -8,7 +9,7 @@ import io.zipcoder.casino.player.Players;
 import java.util.ArrayList;
 
 public class Craps extends DiceGame implements Gamble {
-
+    Console console = new Console();
     private ArrayList<CrapsPlayer> crapsPlayers = new ArrayList<>();
     long bet;
 
@@ -36,7 +37,7 @@ public class Craps extends DiceGame implements Gamble {
     }
 
     public void placeBet() {
-        bet = 5;
+        bet = console.getIntegerInput("Enter your bet");
     }
 
     public void evaluateBet(Player player, long payout) {
