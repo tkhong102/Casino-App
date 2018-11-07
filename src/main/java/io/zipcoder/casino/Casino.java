@@ -9,6 +9,9 @@ import io.zipcoder.casino.player.Players;
 import io.zipcoder.casino.utilities.Console;
 import io.zipcoder.casino.utilities.Game;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
+
 public class Casino {
     private Game game;
     Players players = Players.getInstance();
@@ -91,10 +94,10 @@ public class Casino {
 
     public void bootPlayer() {
         // If player balance is 0, player game over
-        for(Player player : players.getPlayers()) {
-          if(player.getChipBalance()<=0){
-            console.println(player.getName() + ", YOU ARE BROKE. GTFO, PEASANT.");
-            players.removePlayer(player);
+        for (int i = 0; i < players.getPlayers().size(); i++) {
+          if(players.getPlayers().get(i).getChipBalance()<=0){
+            console.println(players.getPlayers().get(i).getName() + ", YOU ARE BROKE. GTFO, PEASANT.");
+            players.removePlayer(players.getPlayers().get(i));
           }
         }
     }
