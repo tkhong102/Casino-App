@@ -1,9 +1,9 @@
 package io.zipcoder.casino;
 
+import io.zipcoder.casino.player.BlackJackPlayer;
+import io.zipcoder.casino.player.Player;
 import org.junit.Before;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 public class BlackJackPlayerTest {
     Player player = new Player("Mr. Guy");

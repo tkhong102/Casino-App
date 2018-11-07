@@ -1,15 +1,15 @@
-package io.zipcoder.casino;
+package io.zipcoder.casino.dicegames.dice;
 
     import java.util.Random;
 
     public class Dice {
         public int dieCount;
 
-//        Dice(){ this.dieCount = 1; }
-        Dice(int dieCount) {
+        public Dice(int dieCount) {
             this.dieCount = dieCount;
         }
-        Dice() {
+
+        public Dice() {
             this.dieCount = 1;
         }
 
