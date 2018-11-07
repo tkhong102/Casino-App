@@ -2,6 +2,7 @@ package io.zipcoder.casino.cardgames;
 
 import io.zipcoder.casino.cardgames.cards.Card;
 import io.zipcoder.casino.cardgames.cards.CardHand;
+import io.zipcoder.casino.cardgames.cards.CardValue;
 import io.zipcoder.casino.cardgames.cards.Deck;
 import io.zipcoder.casino.utilities.Console;
 import io.zipcoder.casino.utilities.Gamble;
@@ -18,7 +19,6 @@ public class BlackJack extends CardGame implements Gamble {
 
     private Deck deck = new Deck();
     private ArrayList<BlackJackPlayer> blackJackPlayers = new ArrayList<>();
-    CardHand playerHand = new CardHand();
     CardHand dealerHand = new CardHand();
     long bet;
 
@@ -45,78 +45,70 @@ public class BlackJack extends CardGame implements Gamble {
 
         this.bet = bet;
 
-        dealCards(currentPlayer, 2);
+        dealCards(2);
+        dealerHand.add(deck.removeFirst());
+        dealerHand.add(deck.removeFirst());
 
         if (getSum(dealerHand) == 21){
-            Console.println("Dealer has +," +  dealerHand.getCard(0) + " and " + dealerHand.getCard(1));
-            Console.println("You have " + playerHand.getCard(0) + " and " + playerHand.getCard(1));
-            Console.println("Dealer wins.");
+            Console.println("Dealer has +," +  dealerHand.display());
+            Console.println("You have " + currentPlayer.getHand().display());
+            Console.println("Dealer win.");
         }
 
-        if (getSum(playerHand) == 21){
-            Console.println("Dealer has " + dealerHand.getCard(0) + " and " + dealerHand.getCard(1));
-            Console.println("You have " + playerHand.getCard(0) + " and " + playerHand.getCard(1));
-            Console.println("You wins.");
+        if (getSum(currentPlayer.getHand()) == 21){
+            Console.println("Dealer has " + dealerHand.display());
+            Console.println("You have " + currentPlayer.getHand().display());
+            Console.println("You win.");
         }
 
         while(true) {
 
-            Console.println("You have: ");
-            for (int i = 0; i < playerHand.getSize(); i++) {
-                Console.println(" " + playerHand.getCard(i);
-            }
-            Console.println("Dealer is showing a " + dealerHand.getCard(0));
+            Console.println("You have: " + currentPlayer.getHand().display());
+            Console.println("Dealer is showing a " + dealerHand.get(0).getCard());
             String hitOrStand = Console.getStringInput("Do you want to Hit or Stand? \n Enter H for Hit or S for Stand");
 
-            while (getSum(playerHand) < 21){
-            if (hitOrStand.equals("H")) {
-                dealCards(currentPlayer, 1);
-            } else if (hitOrStand.equals("S")){
-                break;
-            }else {
-                hitOrStand = Console.getStringInput("Invalid input. Please enter H for Hit or S for Stand");
-            }
-            Console.println("You have: ");
-                for (int i = 0; i < playerHand.getSize(); i++) {
-                    Console.println(" " + playerHand.getCard(i));
+            while (getSum(currentPlayer.getHand()) < 21) {
+                if (hitOrStand.equals("H")) {
+                    dealCards(currentPlayer, 1);
+                } else if (hitOrStand.equals("S")) {
+                    break;
+                } else {
+                    hitOrStand = Console.getStringInput("Invalid input. Please enter H for Hit or S for Stand");
                 }
-                hitOrStand = Console.getStringInput("Do you want to Hit or Stand? \n Enter H for Hit or S for Stand");
-                }
-                return false;
             }
 
-            Console.println("Dealer's card are: ");
-            for (int i = 0; i < dealerHand.getSize(); i++) {
-            Console.println(" " + dealerHand.getCard(i));
-            }
+            Console.println("You have: " + currentPlayer.getHand().display());
+            Console.println("Dealer's card are: " + dealerHand.display());
+
             while (getSum(dealerHand) < 17) {
-                Card newCard = drawCard();
-                Console.println("Dealer drew a " + newCard.getCardValue() + " of " + newCard.getSuit());
+                revealCard();
                 if (getSum(dealerHand) > 21) {
                     Console.println("Dealer busted. " + currentPlayer + " wins.");
                 }
             }
 
-            if (getSum(dealerHand) == getSum(playerHand)) {
-              Console.println("It's a tie. You lose.");
-              return false;
-            } else if (getSum(dealerHand) > getSum(playerHand)) {
-              Console.println("Dealer wins.");
-              return false;
-            }else {
-              Console.println("You win!");
-              return false;
+            if (getSum(dealerHand) == getSum(currentPlayer.getHand())) {
+                Console.println("It's a tie. You lose.");
+                return false;
+            } else if (getSum(dealerHand) > getSum(currentPlayer.getHand())) {
+                Console.println("Dealer wins.");
+                return false;
+            } else {
+                Console.println("You win!");
+                return false;
             }
 
-
+        }
 
 }
 
-    public void dealCards(BlackJackPlayer player, int numberOfCards) {
+    public void dealCards(int numberOfCards) {
 
         for(BlackJackPlayer p: blackJackPlayers){ //deal 2 cards to each player
-            super.dealCards(p, 2);
-
+            for (int i = 0; i < numberOfCards; i++) {
+                Card card = deck.removeFirst();
+                p.getHand().add(card);
+            }
         }
     }
 
@@ -132,9 +124,7 @@ public class BlackJack extends CardGame implements Gamble {
 
     public Card drawCard() {
         // draws card from deck and adds it to "upcard" total
-        Card card = dealerHand.add(deck.getFirst());
-        deck.removeFirst();
-
+        Card card = deck.removeFirst();
         return card;
     }
 
@@ -144,7 +134,7 @@ public class BlackJack extends CardGame implements Gamble {
         boolean ace = false;
 
         for (int i = 0; i < cardHands.size(); i++) {
-            int cardValue = cardHands.get(i).getCardValue();
+            int cardValue = cardHands.get(i).getCardValue().getCardValue();
 
             if (cardValue > 10) {
                 cardValue = 10;   // For a Jack, Queen, or King.
@@ -162,7 +152,9 @@ public class BlackJack extends CardGame implements Gamble {
 
 
     public void revealCard(){
-
+        Card newCard = drawCard();
+        Console.println("Dealer drew a " + newCard.getCardValue() + " of " + newCard.getSuit());
+        dealerHand.add(newCard);
     }
 
 
