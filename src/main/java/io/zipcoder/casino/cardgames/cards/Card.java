@@ -26,5 +26,4 @@ public final class Card {
         this.cardValue = cardValue;
     }
 
-
 }

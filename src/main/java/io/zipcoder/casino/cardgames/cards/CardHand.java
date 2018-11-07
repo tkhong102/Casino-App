@@ -12,4 +12,10 @@ public class CardHand {
     public CardHand() {
     }
 
+    public Card getCard(int position){
+
+        return cardHand.get(position);
+
+    }
+
 }

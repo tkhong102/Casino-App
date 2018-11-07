@@ -39,8 +39,5 @@ import java.util.ArrayList;
 
     }
 
-    public String getCard(Card card){
-        return card.getCardValue() + "of" + card.getSuit();
-        }
 
 }
