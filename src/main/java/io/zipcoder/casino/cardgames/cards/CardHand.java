@@ -1,10 +1,12 @@
 package io.zipcoder.casino.cardgames.cards;
 
+import io.zipcoder.casino.utilities.Console;
+
 import java.util.ArrayList;
 
-public class CardHand {
+public class CardHand extends ArrayList<Card> {
 
-    int numberOfCards;
+    int numberOfCards = this.size();
 //    private java.util.ArrayList<Card> cardHand;
 //
 //    public CardHand(int numberOfCards) {
@@ -15,24 +17,20 @@ public class CardHand {
 //
 //    }
 
-    private ArrayList<Card> cardHand = new ArrayList<>();
-    private int numberofCards = cardHand.size();
-
-    public void addCard(Card card) {
-        cardHand.add(card);
-
-    }
-
-    public void removeCard(Card card) {
-        cardHand.remove(card);
-
-    }
+//    public void addCard(Card card) {
+//        add(card);
+//    }
+//
+//    public void removeCard(Card card) {
+//        remove(card);
+//
+//    }
 
     public String display() {
         String result = "";
-        for (Card each : cardHand)
+        for (Card each : this)
             result = each.getCardValue() + " of " + each.getSuit();
-        System.out.println(result);
+        Console.println(result);
         return result;
     }
 }
