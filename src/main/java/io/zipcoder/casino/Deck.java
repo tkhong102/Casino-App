@@ -37,6 +37,11 @@ import java.util.Collections;
         for (Card card : deck.deck) {
 //            System.out.println(card.getCardValue() + " " + card.getSuit());
         }
+
     }
+
+    public String getCard(Card card){
+        return card.getCardValue() + "of" + card.getSuit();
+        }
 
 }

@@ -19,7 +19,7 @@ public class GoFish extends CardGame {
     int setsCount;
 
     @Override
-    void dealCards(BlackJackPlayer player, int numberOfCards) {
+    void dealCards(Player player, int numberOfCards) {
         super.dealCards(player, numberOfCards);
         //For 2 to 3 players you deal each player 7 cards.
         //If there are more than three players, deal 5 cards each.

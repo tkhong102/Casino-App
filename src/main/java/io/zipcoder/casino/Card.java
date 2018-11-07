@@ -25,4 +25,6 @@ public final class Card {
     public void setCardValue(CardValue cardValue){
         this.cardValue = cardValue;
     }
+
+
 }
