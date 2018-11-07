@@ -25,6 +25,7 @@ public class Deck {
 
             System.out.println(oneCard.getCardValue() + " of " + oneCard.getSuit());
 //            CardValue.values();
+
         }
     }
 

@@ -3,11 +3,16 @@ package io.zipcoder.casino;
 import java.util.ArrayList;
 
 public class GoFish extends CardGame {
+    private static Deck drawPile = new Deck();
 
     private ArrayList<GoFishPlayer> goFishPlayers = new ArrayList<>();
 
+    public static void main(String[] args) {
+        System.out.println();
+    }
     public GoFish(){
         readyPlayers();
+        runGame();
     }
 
     public void readyPlayers() {
@@ -16,13 +21,11 @@ public class GoFish extends CardGame {
         }
     }
 
-    int setsCount;
-
     public int getNumberOfCards() {      //generate numberOfCards param for below based on number of players
         int numberOfCards;
-        if (goFishPlayers.size() <= 3) {
+        if (goFishPlayers.size() <= 3) {  //RULES: For 3 players or less, deal each player 7 cards;
             numberOfCards = 7;
-        } else {
+        } else {                           //RULES contd: if more than three players, deal 5 cards each.
             numberOfCards = 5;
         }
         return numberOfCards;
@@ -31,12 +34,21 @@ public class GoFish extends CardGame {
     @Override
     void dealCards(Player player, int numberOfCards) {
         super.dealCards(player, numberOfCards);
-
-        //RULES: For 3 players or less, deal each player 7 cards; If more than three players, deal 5 cards each.
+        // dealPile = dealPile - numberOfCards;
     }
-public
+//
+//    public void updateDrawPile() {
+//        drawPile = drawPile.
+//    public void play() {
+//        for (int i = 0; i < )
+//        }
+
+    int setsCount;
+
+
+
     //while (drawPile > 0) {
-    public void questionPlayer(String cardRank, Player player) {
+    //public void questionPlayer(String cardRank, Player player) {
         //start w/ player
         //for (deck.size aka (52 cards - numOfCards per player))
             //askPlayerQuestion(); Prompt w/ question of who to ask [console output?]
@@ -53,7 +65,7 @@ public
         //checkSets: run through each cardHand and looks for 4 of a kind;
                 //if found, setsCount++;
 
-    }
+
 
     public void evalCards() {
         //for cards in dealerHand:
