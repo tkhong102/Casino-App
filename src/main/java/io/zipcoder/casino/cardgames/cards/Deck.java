@@ -1,7 +1,6 @@
-package io.zipcoder.casino;
+package io.zipcoder.casino.cardgames.cards;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class Deck {
 
