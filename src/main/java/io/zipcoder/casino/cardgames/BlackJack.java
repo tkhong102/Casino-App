@@ -1,4 +1,10 @@
-package io.zipcoder.casino;
+package io.zipcoder.casino.cardgames;
+
+import io.zipcoder.casino.cardgames.cards.Deck;
+import io.zipcoder.casino.utilities.Gamble;
+import io.zipcoder.casino.player.BlackJackPlayer;
+import io.zipcoder.casino.player.Player;
+import io.zipcoder.casino.player.Players;
 
 import java.util.ArrayList;
 
@@ -11,7 +17,7 @@ public class BlackJack extends CardGame implements Gamble {
     }
 
     public void readyPlayers() {
-        for (Player player : Players.getInstance().playerList) {
+        for (Player player : Players.getInstance().getPlayers()) {
             blackJackPlayers.add(new BlackJackPlayer(player));
         }
     }

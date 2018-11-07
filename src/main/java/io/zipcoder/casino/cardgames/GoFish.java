@@ -1,10 +1,15 @@
-package io.zipcoder.casino;
+package io.zipcoder.casino.cardgames;
+
+import io.zipcoder.casino.cardgames.cards.Deck;
+import io.zipcoder.casino.player.GoFishPlayer;
+import io.zipcoder.casino.player.Player;
+import io.zipcoder.casino.player.Players;
 
 import java.util.ArrayList;
 
 public class GoFish extends CardGame {
     private static Deck drawPile = new Deck();
-
+    // Change Deck to deque;
     private ArrayList<GoFishPlayer> goFishPlayers = new ArrayList<>();
 
     public static void main(String[] args) {
@@ -16,7 +21,7 @@ public class GoFish extends CardGame {
     }
 
     public void readyPlayers() {
-        for (Player player : Players.getInstance().playerList) {
+        for (Player player : Players.getInstance().getPlayers()) {
             goFishPlayers.add(new GoFishPlayer(player));
         }
     }
@@ -37,11 +42,10 @@ public class GoFish extends CardGame {
         // dealPile = dealPile - numberOfCards;
     }
 //
-//    public void updateDrawPile() {
-//        drawPile = drawPile.
-//    public void play() {
-//        for (int i = 0; i < )
-//        }
+    public void updateDrawPile() {
+
+    public void play() {
+        for (int i = 0; i }
 
     int setsCount;
 

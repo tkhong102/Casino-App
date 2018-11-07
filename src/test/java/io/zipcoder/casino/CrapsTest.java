@@ -1,7 +1,9 @@
 package io.zipcoder.casino;
 
+import io.zipcoder.casino.dicegames.Craps;
+import io.zipcoder.casino.player.CrapsPlayer;
+import io.zipcoder.casino.player.Player;
 import org.junit.Test;
-import org.junit.Assert;
 
 import java.util.*;
 

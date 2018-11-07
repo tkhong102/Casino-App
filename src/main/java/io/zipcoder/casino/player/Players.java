@@ -1,4 +1,4 @@
-package io.zipcoder.casino;
+package io.zipcoder.casino.player;
 
 import java.util.ArrayList;
 
@@ -29,6 +29,9 @@ public class Players {
         }
     }
 
+    public ArrayList<Player> getPlayers() {
+        return playerList;
+    }
 
     public void removePlayer(final Player player) {
         playerList.removeIf(Player -> Player.equals(player));

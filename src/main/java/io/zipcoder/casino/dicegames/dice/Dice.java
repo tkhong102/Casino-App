@@ -1,4 +1,4 @@
-package io.zipcoder.casino;
+package io.zipcoder.casino.dicegames.dice;
 
     import java.util.Random;
 
@@ -7,9 +7,10 @@ package io.zipcoder.casino;
 
 //        Dice(){ this.dieCount = 1; }
         Dice(int dieCount) {
-            this.dieCount = dieCount;
+
         }
-        Dice() {
+
+        public Dice() {
             this.dieCount = 1;
         }
 

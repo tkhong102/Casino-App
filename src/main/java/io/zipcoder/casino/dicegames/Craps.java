@@ -1,7 +1,11 @@
-package io.zipcoder.casino;
+package io.zipcoder.casino.dicegames;
+
+import io.zipcoder.casino.utilities.Gamble;
+import io.zipcoder.casino.player.CrapsPlayer;
+import io.zipcoder.casino.player.Player;
+import io.zipcoder.casino.player.Players;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Craps extends DiceGame implements Gamble {
 
@@ -20,7 +24,7 @@ public class Craps extends DiceGame implements Gamble {
     }
 
     public void readyPlayers() {
-        for (Player player : Players.getInstance().playerList) {
+        for (Player player : Players.getInstance().getPlayers()) {
             crapsPlayers.add(new CrapsPlayer(player));
         }
     }
@@ -46,17 +50,17 @@ public class Craps extends DiceGame implements Gamble {
         int sum = rollDie(2); // roll two dice, store sum in sum field.
 
         if (sum == 7 || sum == 11) {
-            evaluateBet(currentPlayer.crapsPlayer, bet*2);
+            evaluateBet(currentPlayer.getP(), bet*2);
         } else if (sum == 2 || sum == 3 || sum == 12) {
-            evaluateBet(currentPlayer.crapsPlayer, -(bet*2));
+            evaluateBet(currentPlayer.getP(), -(bet*2));
         } else {
             int point = sum;
             do {
                 sum = rollDie(2);
                 if (sum == 7) {
-                    evaluateBet(currentPlayer.crapsPlayer, -bet);
+                    evaluateBet(currentPlayer.getP(), -bet);
                 } else if (sum == point) {
-                    evaluateBet(currentPlayer.crapsPlayer, bet);
+                    evaluateBet(currentPlayer.getP(), bet);
                 }
             } while (sum != point && sum != 7);
         }
@@ -64,7 +68,7 @@ public class Craps extends DiceGame implements Gamble {
 
     public void print(){
         for(int i = 0; i < crapsPlayers.size(); i++){
-            System.out.println(crapsPlayers.get(i).crapsPlayer.getChipBalance());
+            System.out.println(crapsPlayers.get(i).getP().getChipBalance());
         }
     }
 }

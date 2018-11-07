@@ -1,7 +1,6 @@
-package io.zipcoder.casino;
+package io.zipcoder.casino.cardgames.cards;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class Deck {
 
@@ -35,7 +34,9 @@ public class Deck {
 //            System.out.println(value.getCardValue());
 //        }
         Deck deck = new Deck();
+        int cardCount = 0;
         for (Card card : deck.deck) {
+            cardCount++;
 //            System.out.println(card.getCardValue() + " " + card.getSuit());
         }
     }
