@@ -136,6 +136,8 @@ public class Console {
         double userInput = scanner.nextDouble() ;
         return userInput;
     }
+
+
 //
 //    public Integer getPlayersInput(String prompt){
 //        Scanner scanner = new Scanner(System.in);

@@ -7,10 +7,7 @@ import io.zipcoder.casino.dicegames.Craps;
 import io.zipcoder.casino.player.Player;
 import io.zipcoder.casino.player.Players;
 import io.zipcoder.casino.utilities.Console;
-import io.zipcoder.casino.utilities.Game;
-
-import java.lang.reflect.Array;
-import java.util.Arrays;
+import io.zipcoder.casino.utilities.abstracts.Game;
 
 public class Casino {
     private Game game;
@@ -31,15 +28,24 @@ public class Casino {
     }
 
     public void enterPlayers() {
-      int numberOfPlayers = console.getIntegerInput("WELCOME TO EPSILON CASINO, CALLED \"ALMOST A CASINO\" ON YELP\n" +
-              "PLEASE ENTER A NUMBER OF PLAYERS.");
-      String playerNames = "";
-      for (int i = 1; i <= numberOfPlayers; i++) {
-        String nameOfPlayer = console.getStringInput("PLAYER " + i + ": WHAT IS YOUR NAME?\n");
-        players.addPlayer(new Player(nameOfPlayer));
-        playerNames += nameOfPlayer + ", ";
-      }
-      console.println(playerNames + "THANK YOU FOR JOINING US");
+        int numberOfPlayers = getNumberOfPlayers();
+        String playerNames = "";
+        playerNames = getPlayerNames(numberOfPlayers, playerNames);
+        console.println(playerNames + "THANK YOU FOR JOINING US");
+    }
+
+    private String getPlayerNames(int numberOfPlayers, String playerNames) {
+        for (int i = 1; i <= numberOfPlayers; i++) {
+          String nameOfPlayer = console.getStringInput("PLAYER " + i + ": WHAT IS YOUR NAME?\n");
+          players.addPlayer(new Player(nameOfPlayer));
+          playerNames += nameOfPlayer + ", ";
+        }
+        return playerNames;
+    }
+
+    private int getNumberOfPlayers() {
+        return console.getIntegerInput("WELCOME TO EPSILON CASINO, CALLED \"ALMOST A CASINO\" ON YELP\n" +
+                  "PLEASE ENTER A NUMBER OF PLAYERS.");
     }
 
     public void chooseTable() {
@@ -52,19 +58,21 @@ public class Casino {
       Integer number=console.getIntegerInput("") ;
        switch(number){
          case 1:
-              console.println("WELCOME TO CRAPS\n") ;
-              game = new Craps();
-              break;
+             runGame(new Craps());
+             break;
         case 2:
-              console.println("WELCOME TO BLACK JACK\n") ;
-              game = new BlackJack();
-              break;
+             runGame(new BlackJack());
+             break;
         case 3:
-              console.println("WELCOME TO GO FISH\n");
-              game = new GoFish();
-              break;
+             runGame(new GoFish());
+             break;
        }        
      }
+
+    private void runGame(Game game) {
+        console.println("WELCOME TO %s", game.getClassName());
+        this.game = game;
+    }
 
     public void confirmPlayers() {
       boolean isConfirmed = false;

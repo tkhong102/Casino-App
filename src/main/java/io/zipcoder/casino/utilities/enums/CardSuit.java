@@ -1,4 +1,4 @@
-package io.zipcoder.casino.cardgames.cards;
+package io.zipcoder.casino.utilities.enums;
 
 public enum CardSuit {
     HEARTS('♥'),
