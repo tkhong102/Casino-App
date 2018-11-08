@@ -38,7 +38,7 @@ public class Craps extends DiceGame implements Gamble {
         }
     }
 
-    public void placeBet() {
+    public void placeBet(Player player) {
         this.bet = console.integerInputSameLine("Enter your bet: ");
     }
 
@@ -47,7 +47,7 @@ public class Craps extends DiceGame implements Gamble {
     }
 
     public void play(CrapsPlayer currentPlayer) {
-        placeBet();
+        placeBet(currentPlayer);
         int sum = rollDie(2);
 
         promptEnterKey("roll dice");
