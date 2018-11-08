@@ -11,6 +11,10 @@ public class GoFishPlayer extends Player{
         this.goFishPlayer = player;
     }
 
+    public GoFishPlayer() {
+
+    }
+
     public Player getP() {
         return goFishPlayer;
     }
