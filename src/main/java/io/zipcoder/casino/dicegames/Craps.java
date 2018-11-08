@@ -1,5 +1,6 @@
 package io.zipcoder.casino.dicegames;
 
+import io.zipcoder.casino.player.BlackJackPlayer;
 import io.zipcoder.casino.utilities.Console;
 import io.zipcoder.casino.utilities.interfaces.Gamble;
 import io.zipcoder.casino.player.CrapsPlayer;
@@ -40,6 +41,13 @@ public class Craps extends DiceGame implements Gamble {
 
     public void placeBet() {
         this.bet = console.integerInputSameLine("Enter your bet: ");
+    }
+
+    @Override
+    public void placeBet(Player player) {
+        BlackJackPlayer blackJackPlayer = (BlackJackPlayer) player;
+        long bet = Console.getLongInput("Please enter your bet.");
+        blackJackPlayer.setBet(bet);
     }
 
     public void evaluateBet(Player player, long payout) {
