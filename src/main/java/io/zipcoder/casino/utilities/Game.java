@@ -1,17 +1,11 @@
 package io.zipcoder.casino.utilities;
 
-public class Game {
-    public void promptContinue() {
-        // REMATCH (runGame), NEXT GAME (return to casino), EXIT CASINO (quit)
-    }
+public abstract class Game {
+    abstract void promptContinue();
 
-    public void runGame() {
-        //initializes game
-    }
+    abstract void runGame();
 
-    public void endGame() {
-        //ends game, returns to Casino prompt loop
-    }
+    abstract void endGame();
 
 
 }

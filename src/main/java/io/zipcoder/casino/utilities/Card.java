@@ -1,4 +1,7 @@
-package io.zipcoder.casino.cardgames.cards;
+package io.zipcoder.casino.utilities;
+
+import io.zipcoder.casino.utilities.enums.CardSuit;
+import io.zipcoder.casino.utilities.enums.CardValue;
 
 public final class Card {
 
