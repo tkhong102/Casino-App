@@ -81,16 +81,18 @@ public class BlackJack extends CardGame implements Gamble {
             Console.println("Dealer's card are: " + dealerHand.display());
 
             while (getSum(dealerHand) < 17) {
+                dealerHand.add(deck.removeFirst());
                 revealCard();
-                if (getSum(dealerHand) > 21) {
-                    Console.println("Dealer busted. " + currentPlayer + " wins.");
-                }
+                Console.println("Dealer's sum is " + getSum(dealerHand));
+            }
+            if (getSum(dealerHand) > 21) {
+                Console.println("Dealer busted. You win.");
             }
 
             if (getSum(dealerHand) == getSum(currentPlayer.getHand())) {
                 Console.println("It's a tie. You lose.");
                 return false;
-            } else if (getSum(dealerHand) > getSum(currentPlayer.getHand())) {
+            } else if (getSum(dealerHand) <=21 && getSum(dealerHand) > getSum(currentPlayer.getHand())) {
                 Console.println("Dealer wins.");
                 return false;
             } else {
