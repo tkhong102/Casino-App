@@ -1,10 +1,11 @@
 package io.zipcoder.casino.cardgames;
 
 import io.zipcoder.casino.utilities.Card;
+import io.zipcoder.casino.utilities.abstracts.CardGame;
 import io.zipcoder.casino.utilities.containers.CardHand;
 import io.zipcoder.casino.utilities.containers.Deck;
 import io.zipcoder.casino.utilities.Console;
-import io.zipcoder.casino.utilities.Gamble;
+import io.zipcoder.casino.utilities.interfaces.Gamble;
 import io.zipcoder.casino.player.BlackJackPlayer;
 import io.zipcoder.casino.player.Player;
 import io.zipcoder.casino.player.Players;
@@ -22,7 +23,7 @@ public class BlackJack extends CardGame implements Gamble {
     public BlackJack(){
         readyPlayers();
         dealCards(2);
-        run();
+        runGame();
     }
 
     public void readyPlayers() {
@@ -31,7 +32,8 @@ public class BlackJack extends CardGame implements Gamble {
         }
     }
 
-    public void run(){
+    @Override
+    public void runGame(){
         for(int i = 0; i < blackJackPlayers.size(); i++){
             play(blackJackPlayers.get(i),blackJackPlayers.get(i).getBet());
         }
@@ -66,7 +68,6 @@ public class BlackJack extends CardGame implements Gamble {
 
 
         if (dealersTurn()) return false;
-
 
         return evalWinner(currentPlayer, bet);
 
@@ -128,7 +129,7 @@ public class BlackJack extends CardGame implements Gamble {
 
         while (getSum(currentPlayer.getHand()) < 21) {
             if (hitOrStand.equalsIgnoreCase("H")) {
-                dealCard(currentPlayer, 1);
+                dealCards(currentPlayer, 1);
             } else if (hitOrStand.equalsIgnoreCase("S")) {
                 break;
             } else {
@@ -146,8 +147,7 @@ public class BlackJack extends CardGame implements Gamble {
         }
     }
 
-
-
+    @Override
     public void dealCards(int numberOfCards) {
 
         for(BlackJackPlayer p: blackJackPlayers){ //deal 2 cards to each player
@@ -158,10 +158,12 @@ public class BlackJack extends CardGame implements Gamble {
         }
     }
 
-    public void dealCard(BlackJackPlayer p, int numberOfCards) {
+    @Override
+    public void dealCards(Player p, int numberOfCards) {
+        BlackJackPlayer bjp = (BlackJackPlayer) p;
         for (int i = 0; i < numberOfCards; i++) {
             Card card = deck.removeFirst();
-            p.getHand().add(card);
+            bjp.getHand().add(card);
         }
     }
 
@@ -208,5 +210,8 @@ public class BlackJack extends CardGame implements Gamble {
         Console.println("Dealer drew a " + newCard.getCardValue() + " of " + newCard.getSuit());
         dealerHand.add(newCard);
     }
-    
+
+    @Override
+    public void promptContinue(){};
+
 }
