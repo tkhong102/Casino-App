@@ -1,6 +1,5 @@
 package io.zipcoder.casino.utilities;
 
-import java.awt.peer.SystemTrayPeer;
 import java.util.Scanner;
 
 public class Console {
@@ -112,7 +111,7 @@ public class Console {
         String userInput = scanner.nextLine();
         return userInput;
       }
-     public Integer getIntegerInput(String prompt){
+     public static Integer getIntegerInput(String prompt){
          Scanner scanner = new Scanner(System.in);
          println(prompt);
          int userInput = scanner.nextInt();

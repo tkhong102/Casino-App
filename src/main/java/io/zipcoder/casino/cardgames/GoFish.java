@@ -1,5 +1,6 @@
 package io.zipcoder.casino.cardgames;
 
+import io.zipcoder.casino.cardgames.cards.Card;
 import io.zipcoder.casino.cardgames.cards.Deck;
 import io.zipcoder.casino.player.GoFishPlayer;
 import io.zipcoder.casino.player.Player;
@@ -12,13 +13,10 @@ public class GoFish extends CardGame {
     private static Deck drawPile = new Deck();
     private ArrayList<GoFishPlayer> goFishPlayers = new ArrayList<>();
 
-//    public static void main(String[] args) {
-//        System.out.println();
-//    }
-
     public GoFish() {
         readyPlayers();
-        runGame();
+        //dealCards(getNumberOfCards());
+        playGoFish();
     }
 
     public void readyPlayers() {
@@ -37,15 +35,15 @@ public class GoFish extends CardGame {
         return numberOfCards;
     }
 
-    @Override
-    void dealCards(Player player, int numberOfCards) {
-        super.dealCards(player, numberOfCards);
+    //@Override
+    void dealCards(GoFishPlayer player, int numberOfCards) {          //will this dealing remove from the drawPile automatically?
+        //super.dealCards(player, numberOfCards);
+        for (int i = 0; i < numberOfCards; i++) {
+            Card card = drawPile.removeFirst();
+            //GoFishPlayer.getHand().add(card);
+        }
     }
 
-//    public void run() {
-//        while (drawPile.size() > 0) {
-//            play(GoFishPlayer.get(i));
-//        }
 
     public void playGoFish() {
         while ((drawPile.size() > 0) && goFishPlayers.size() > 0) {
@@ -53,20 +51,28 @@ public class GoFish extends CardGame {
             askForOpponent();
             askForOpponentCards();
 
+
         }
     }
 
     public void askForOpponent() {
-        Console.println("Which player would you like to question?");
-//        String opponent = Console.getStringInput(userInput);
+        String opponent = Console.getStringInput("Which player would you like to question?");
     }
 
     public void askForOpponentCards() {
-        Console.println("Which card would you like to request?");
-//        int opponentCard = Console.getIntegerInput();
+        Integer opponentCard = Console.getIntegerInput("Which card would you like to request?");
     }
         //public void questionPlayer(String cardRank, Player player) {
+    public void evalCards(String opponent, Integer opponentCard) {
+        for (int i = 0; i < goFishPlayers.size(); i++) {
+            if (opponent.equals(goFishPlayers.get(i))) {
+//                if (opponentCard == )
+            }
 
+            }
+
+
+    }
 
         //take userInput [console input?]
         //askPlayerCard(); Prompt w/question of what card (rank) to look for [console output?]
