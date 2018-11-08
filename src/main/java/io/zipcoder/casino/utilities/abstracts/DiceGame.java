@@ -1,7 +1,6 @@
-package io.zipcoder.casino.dicegames;
+package io.zipcoder.casino.utilities.abstracts;
 
 import io.zipcoder.casino.utilities.Dice;
-import io.zipcoder.casino.utilities.Game;
 
 public abstract class DiceGame extends Game {
 

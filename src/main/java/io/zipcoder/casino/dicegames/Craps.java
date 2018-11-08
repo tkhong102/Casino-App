@@ -1,10 +1,11 @@
 package io.zipcoder.casino.dicegames;
 
 import io.zipcoder.casino.utilities.Console;
-import io.zipcoder.casino.utilities.Gamble;
+import io.zipcoder.casino.utilities.interfaces.Gamble;
 import io.zipcoder.casino.player.CrapsPlayer;
 import io.zipcoder.casino.player.Player;
 import io.zipcoder.casino.player.Players;
+import io.zipcoder.casino.utilities.abstracts.DiceGame;
 
 import java.util.ArrayList;
 

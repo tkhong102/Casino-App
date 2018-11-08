@@ -1,4 +1,4 @@
-package io.zipcoder.casino.utilities;
+package io.zipcoder.casino.utilities.abstracts;
 
 public abstract class Game {
     String className = this.getClass().getName();

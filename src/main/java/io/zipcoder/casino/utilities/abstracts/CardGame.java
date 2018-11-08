@@ -1,8 +1,6 @@
-package io.zipcoder.casino.cardgames;
+package io.zipcoder.casino.utilities.abstracts;
 
-import io.zipcoder.casino.player.BlackJackPlayer;
 import io.zipcoder.casino.utilities.containers.Deck;
-import io.zipcoder.casino.utilities.Game;
 import io.zipcoder.casino.player.Player;
 
 public abstract class CardGame extends Game {

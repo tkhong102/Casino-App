@@ -1,10 +1,11 @@
 package io.zipcoder.casino.cardgames;
 
 import io.zipcoder.casino.utilities.Card;
+import io.zipcoder.casino.utilities.abstracts.CardGame;
 import io.zipcoder.casino.utilities.containers.CardHand;
 import io.zipcoder.casino.utilities.containers.Deck;
 import io.zipcoder.casino.utilities.Console;
-import io.zipcoder.casino.utilities.Gamble;
+import io.zipcoder.casino.utilities.interfaces.Gamble;
 import io.zipcoder.casino.player.BlackJackPlayer;
 import io.zipcoder.casino.player.Player;
 import io.zipcoder.casino.player.Players;
