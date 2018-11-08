@@ -1,6 +1,6 @@
 package io.zipcoder.casino.player;
 
-public class CrapsPlayer  {
+public class CrapsPlayer extends Player {
     Player crapsPlayer;
     long bet;
 

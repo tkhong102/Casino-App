@@ -1,8 +1,8 @@
 package io.zipcoder.casino.player;
 
-import io.zipcoder.casino.cardgames.cards.CardHand;
+import io.zipcoder.casino.utilities.containers.CardHand;
 
-public class BlackJackPlayer{
+public class BlackJackPlayer extends Player{
     private CardHand hand;
     Player blackJackPlayer;
     private long bet;

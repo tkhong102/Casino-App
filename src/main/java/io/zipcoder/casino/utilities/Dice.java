@@ -1,8 +1,7 @@
-package io.zipcoder.casino.dicegames.dice;
+package io.zipcoder.casino.utilities;
 
     import java.util.ArrayList;
     import java.util.HashMap;
-    import java.util.List;
     import java.util.Random;
 
     public class Dice {
@@ -29,8 +28,6 @@ package io.zipcoder.casino.dicegames.dice;
             }
             return lastRollGraphic;
         }
-
-        //        Dice(){ this.dieCount = 1; }
 
         public Dice(int dieCount) {
             this.dieCount = dieCount;

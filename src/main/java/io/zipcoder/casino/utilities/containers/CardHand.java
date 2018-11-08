@@ -1,6 +1,6 @@
-package io.zipcoder.casino.cardgames.cards;
+package io.zipcoder.casino.utilities.containers;
 
-import io.zipcoder.casino.utilities.Console;
+import io.zipcoder.casino.utilities.Card;
 
 import java.util.ArrayList;
 

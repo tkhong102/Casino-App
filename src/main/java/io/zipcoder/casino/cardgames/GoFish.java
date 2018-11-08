@@ -1,7 +1,9 @@
 package io.zipcoder.casino.cardgames;
 
-import io.zipcoder.casino.cardgames.cards.Card;
-import io.zipcoder.casino.cardgames.cards.Deck;
+
+import io.zipcoder.casino.utilities.abstracts.CardGame;
+import io.zipcoder.casino.utilities.containers.Deck;
+
 import io.zipcoder.casino.player.GoFishPlayer;
 import io.zipcoder.casino.player.Player;
 import io.zipcoder.casino.player.Players;
@@ -16,7 +18,12 @@ public class GoFish extends CardGame {
     public GoFish() {
         readyPlayers();
         //dealCards(getNumberOfCards());
-        playGoFish();
+       // playGoFish();
+    }
+
+    @Override
+    public void runGame(){
+
     }
 
     public void readyPlayers() {
@@ -35,24 +42,40 @@ public class GoFish extends CardGame {
         return numberOfCards;
     }
 
-    //@Override
-    void dealCards(GoFishPlayer player, int numberOfCards) {          //will this dealing remove from the drawPile automatically?
-        //super.dealCards(player, numberOfCards);
-        for (int i = 0; i < numberOfCards; i++) {
-            Card card = drawPile.removeFirst();
-            //GoFishPlayer.getHand().add(card);
-        }
+
+//    //@Override
+//    void dealCards(GoFishPlayer player, int numberOfCards) {          //will this dealing remove from the drawPile automatically?
+//        //super.dealCards(player, numberOfCards);
+//        for (int i = 0; i < numberOfCards; i++) {
+//            Card card = drawPile.removeFirst();
+//            //GoFishPlayer.getHand().add(card);
+//        }
+//    }
+
+
+    @Override
+    public void dealCards(Player player, int numberOfCards) {
+        // dealPile = dealPile - numberOfCards;
     }
 
+    @Override
+    public void dealCards(int numberOfCards) {
 
-    public void playGoFish() {
-        while ((drawPile.size() > 0) && goFishPlayers.size() > 0) {
-            //Console.print(goFishPlayers.cardHand);
-            askForOpponent();
-            askForOpponentCards();
+    }
 
-
-        }
+    @Override
+    public void promptContinue(){};
+    //
+    public void updateDrawPile() {
+//
+//    public void playGoFish() {
+//        while ((drawPile.size() > 0) && goFishPlayers.size() > 0) {
+//            //Console.print(goFishPlayers.cardHand);
+//            askForOpponent();
+//            askForOpponentCards();
+//
+//
+//        }
     }
 
     public void askForOpponent() {
