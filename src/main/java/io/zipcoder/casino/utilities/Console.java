@@ -102,10 +102,11 @@ public class Console {
 
     public static void printWcarrot(String output){
         System.out.println(output);
-        System.out.print("> asdfasdfasdfasdf");
+        System.out.print(">");
     }
 
-    public String getStringInput(String prompt){
+
+    public static String getStringInput(String prompt){
         Scanner scanner = new Scanner(System.in);
         println(prompt);
         String userInput = scanner.nextLine();
@@ -123,7 +124,7 @@ public class Console {
         int userInput = scanner.nextInt();
         return userInput;
      }
-     public  Long getLongInput(String prompt) {
+     public static Long getLongInput(String prompt) {
          Scanner scanner = new Scanner(System.in);
          println(prompt);
          Long userInput = scanner.nextLong();
