@@ -4,6 +4,7 @@ public final class Card {
 
     private CardSuit suit;
     private CardValue cardValue;
+    private String card;
 
     public Card (CardValue cardValue, CardSuit suit){
         this.cardValue = cardValue;
@@ -14,15 +15,12 @@ public final class Card {
         return suit;
     }
 
-    public void setSuit(CardSuit suit){
-        this.suit = suit;
-    }
-
     public CardValue getCardValue(){
         return cardValue;
     }
 
-    public void setCardValue(CardValue cardValue){
-        this.cardValue = cardValue;
+    public String getCard() {
+        return cardValue + " of " + suit.getCardGraphic();
     }
+
 }

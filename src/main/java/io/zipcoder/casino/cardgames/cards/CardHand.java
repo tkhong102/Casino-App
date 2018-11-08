@@ -11,8 +11,11 @@ public class CardHand extends ArrayList<Card> {
 //    public CardHand(int numberOfCards) {
 //        this.numberOfCards = numberOfCards;
 //    }
-//    public CardHand() {
-//    }
+//
+    public CardHand() {
+
+    }
+//
 //    public void addCard(Card card) {
 //        add(card);
 //    }
@@ -22,9 +25,17 @@ public class CardHand extends ArrayList<Card> {
 
     public String display() {
         String result = "";
-        for (Card each : this)
-            result = each.getCardValue() + " of " + each.getSuit();
-        Console.println(result);
+        int i = 0;
+        for (Card each : this) {
+            if (each == this.get(this.size()-1)) {
+                result += "and " + each.getCardValue() + " of " + each.getSuit().getCardGraphic();
+            } else {
+                result += each.getCardValue() + " of " + each.getSuit().getCardGraphic() + ", ";
+            }
+            i++;
+        }
+//        Console.println(result);
         return result;
     }
+
 }

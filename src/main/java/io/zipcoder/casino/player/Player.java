@@ -2,8 +2,11 @@ package io.zipcoder.casino.player;
 
 public class Player {
 
-    private String name = "";
-    private long chipBalance;
+    protected String name = "";
+    protected long chipBalance;
+
+    public Player() {
+    }
 
     public Player(String name, long startingBalance) {
         this.name = name;
