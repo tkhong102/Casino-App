@@ -100,7 +100,7 @@ public class Console {
         print(output + "\n", args);
     }
 
-    public String getStringInput(String prompt){
+    public static String getStringInput(String prompt){
         Scanner scanner = new Scanner(System.in);
         println(prompt);
         String userInput = scanner.nextLine();
@@ -113,7 +113,7 @@ public class Console {
          return userInput;
 
      }
-     public  Long getLongInput(String prompt) {
+     public static Long getLongInput(String prompt) {
          Scanner scanner = new Scanner(System.in);
          println(prompt);
          Long userInput = scanner.nextLong();
