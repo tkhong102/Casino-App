@@ -1,18 +1,15 @@
 package io.zipcoder.casino.cardgames;
 
-import io.zipcoder.casino.cardgames.cards.Card;
-import io.zipcoder.casino.cardgames.cards.CardHand;
-import io.zipcoder.casino.cardgames.cards.CardValue;
-import io.zipcoder.casino.cardgames.cards.Deck;
+import io.zipcoder.casino.utilities.Card;
+import io.zipcoder.casino.utilities.containers.CardHand;
+import io.zipcoder.casino.utilities.containers.Deck;
 import io.zipcoder.casino.utilities.Console;
 import io.zipcoder.casino.utilities.Gamble;
 import io.zipcoder.casino.player.BlackJackPlayer;
 import io.zipcoder.casino.player.Player;
 import io.zipcoder.casino.player.Players;
 
-import java.sql.SQLOutput;
 import java.util.ArrayList;
-import java.util.Vector;
 
 public class BlackJack extends CardGame implements Gamble {
 
