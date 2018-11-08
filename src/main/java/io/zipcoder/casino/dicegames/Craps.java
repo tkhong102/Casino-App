@@ -46,25 +46,31 @@ public class Craps extends DiceGame implements Gamble {
 
     public void play(CrapsPlayer currentPlayer) {
         placeBet();
-
-        promptEnterKey("roll dice");
-
         int sum = rollDie(2);
 
+        promptEnterKey("roll dice");
         console.println("Your roll sum equals: " + sum);
 
+        simulateCraps(currentPlayer, sum);
+    }
+
+    private void simulateCraps(CrapsPlayer currentPlayer, int sum) {
         if (sum == 7 || sum == 11) {
             evalWin(currentPlayer.getP());
         } else if (sum == 2 || sum == 3 || sum == 12) {
             evalLoss(currentPlayer.getP());
         } else {
-            int point = sum;
-            do {
-                printRollAgain(point);
-                sum = rollDie(2);
-                evalReRoll(currentPlayer, sum , point);
-            } while (sum != point && sum != 7);
+            rollForPoint(currentPlayer, sum);
         }
+    }
+
+    private void rollForPoint(CrapsPlayer currentPlayer, int sum) {
+        int point = sum;
+        do {
+            printRollAgain(point);
+            sum = rollDie(2);
+            evalReRoll(currentPlayer, sum , point);
+        } while (sum != point && sum != 7);
     }
 
     public void print(){
@@ -74,9 +80,8 @@ public class Craps extends DiceGame implements Gamble {
     }
 
     public void printRollAgain(int point){
-        console.println("\n--------------------");
-        console.println("Point to roll for: " + point);
-        console.println("--------------------");
+        console.println("\n--------------------" +
+                "\nPoint to roll for: " + point + "--------------------");
         promptEnterKey("roll again");
     }
 
