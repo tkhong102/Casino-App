@@ -8,22 +8,16 @@ public class CardHand extends ArrayList<Card> {
 
     int numberOfCards = this.size();
 //    private java.util.ArrayList<Card> cardHand;
-//
 //    public CardHand(int numberOfCards) {
 //        this.numberOfCards = numberOfCards;
 //    }
-//
 //    public CardHand() {
-//
 //    }
-
 //    public void addCard(Card card) {
 //        add(card);
 //    }
-//
 //    public void removeCard(Card card) {
 //        remove(card);
-//
 //    }
 
     public String display() {
