@@ -113,7 +113,7 @@ public class Console {
          return userInput;
 
      }
-     public  static Long getLongInput(String prompt) {
+     public static Long getLongInput(String prompt) {
          Scanner scanner = new Scanner(System.in);
          println(prompt);
          Long userInput = scanner.nextLong();

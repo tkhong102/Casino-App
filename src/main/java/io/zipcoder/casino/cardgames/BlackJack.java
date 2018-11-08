@@ -69,7 +69,7 @@ public class BlackJack extends CardGame implements Gamble {
 
             while (getSum(currentPlayer.getHand()) < 21) {
                 if (hitOrStand.equals("H")) {
-                    dealCards(currentPlayer, 1);
+                    dealCard(currentPlayer,1);
                 } else if (hitOrStand.equals("S")) {
                     break;
                 } else {
@@ -109,6 +109,13 @@ public class BlackJack extends CardGame implements Gamble {
                 Card card = deck.removeFirst();
                 p.getHand().add(card);
             }
+        }
+    }
+
+    public void dealCard(BlackJackPlayer p, int numberOfCards) {
+        for (int i = 0; i < numberOfCards; i++) {
+            Card card = deck.removeFirst();
+            p.getHand().add(card);
         }
     }
 
