@@ -16,8 +16,7 @@ package io.zipcoder.casino.dicegames.dice;
             put(4,'⚃');
             put(5,'⚄');
             put(6,'⚅');
-        }}
-                ;
+        }};
 
         public char getDieGraphic(int roll) {
             return diceGraphics.get(roll);
@@ -45,7 +44,9 @@ package io.zipcoder.casino.dicegames.dice;
             Random random = new Random();
 
             int rollSum = 0;
-            lastRoll = null;
+            if (lastRoll.size() > 0) {
+                lastRoll.clear();
+            }
             for (int i = 0; i < dieCount; i++) {
                 int roll = random.nextInt(6)+1;
                 lastRoll.add(roll);
