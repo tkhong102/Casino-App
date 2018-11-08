@@ -54,9 +54,10 @@ public class BlackJack extends CardGame implements Gamble {
 
             playersTurn();
 
-            if (dealersTurn()) continueGame = false;
+            continueGame = dealersTurn(); // IMPLEMENT: if dealer loses, all players should receive payout
 
             evalWinner();
+
         }
 
         if (dealerWins == true) {
@@ -77,6 +78,13 @@ public class BlackJack extends CardGame implements Gamble {
     public void dealerCollectAll() {
         for (BlackJackPlayer p: this.blackJackPlayers){ // collects bet from all players
             evaluateBet(p, -p.getBet());
+        }
+    }
+
+    public void payoutAll() {
+        for (BlackJackPlayer p: this.blackJackPlayers){ // collects bet from all players
+            long winnings = p.getBet()*2;
+            evaluateBet(p, winnings);
         }
     }
 
@@ -126,6 +134,7 @@ public class BlackJack extends CardGame implements Gamble {
 
         if (getSum(dealerHand) > 21) {
             Console.println("Dealer busted. You win.");
+            payoutAll();
             return true;
         }
 
