@@ -100,6 +100,11 @@ public class Console {
         print(output + "\n", args);
     }
 
+    public static void printWcarrot(String output){
+        System.out.println(output);
+        System.out.print("> asdfasdfasdfasdf");
+    }
+
     public String getStringInput(String prompt){
         Scanner scanner = new Scanner(System.in);
         println(prompt);
@@ -111,7 +116,12 @@ public class Console {
          println(prompt);
          int userInput = scanner.nextInt();
          return userInput;
-
+     }
+     public Integer integerInputSameLine(String prompt){
+        Scanner scanner = new Scanner(System.in);
+        printWcarrot(prompt);
+        int userInput = scanner.nextInt();
+        return userInput;
      }
      public  Long getLongInput(String prompt) {
          Scanner scanner = new Scanner(System.in);

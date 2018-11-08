@@ -37,7 +37,7 @@ public class Craps extends DiceGame implements Gamble {
     }
 
     public void placeBet() {
-        this.bet = console.getIntegerInput("Enter your bet");
+        this.bet = console.integerInputSameLine("Enter your bet: ");
     }
 
     public void evaluateBet(Player player, long payout) {
@@ -46,39 +46,23 @@ public class Craps extends DiceGame implements Gamble {
 
     public void play(CrapsPlayer currentPlayer) {
         placeBet();
+
         promptEnterKey("roll dice");
-        int sum = rollDie(2); // roll two dice, store sum in sum field.
+
+        int sum = rollDie(2);
+
         console.println("Your roll sum equals: " + sum);
+
         if (sum == 7 || sum == 11) {
-            console.println("\n*********");
-            console.println("YOU WIN!");
-            console.println("*********\n");
-            evaluateBet(currentPlayer.getP(), bet*2);
+            evalWin(currentPlayer.getP());
         } else if (sum == 2 || sum == 3 || sum == 12) {
-            console.println("\n*********");
-            console.println("YOU LOSE!");
-            console.println("*********\n");
-            evaluateBet(currentPlayer.getP(), -(bet*2));
+            evalLoss(currentPlayer.getP());
         } else {
             int point = sum;
             do {
-                console.println("\n--------------------");
-                console.println("Point to roll for: " + point);
-                console.println("--------------------");
-                promptEnterKey("roll again");
+                printRollAgain(point);
                 sum = rollDie(2);
-                console.println("You rolled a " + sum);
-                if (sum == 7) {
-                    console.println("\n*********");
-                    console.println("YOU LOSE!");
-                    console.println("*********\n");
-                    evaluateBet(currentPlayer.getP(), -bet);
-                } else if (sum == point) {
-                    console.println("\n*********");
-                    console.println("YOU WIN!");
-                    console.println("*********\n");
-                    evaluateBet(currentPlayer.getP(), bet);
-                }
+                evalReRoll(currentPlayer, sum , point);
             } while (sum != point && sum != 7);
         }
     }
@@ -87,6 +71,33 @@ public class Craps extends DiceGame implements Gamble {
         for(int i = 0; i < crapsPlayers.size(); i++){
             System.out.println(crapsPlayers.get(i).getP().getChipBalance());
         }
+    }
+
+    public void printRollAgain(int point){
+        console.println("\n--------------------");
+        console.println("Point to roll for: " + point);
+        console.println("--------------------");
+        promptEnterKey("roll again");
+    }
+
+    public void evalReRoll(CrapsPlayer currentPlayer, int sum, int point){
+        console.println("You rolled a " + sum);
+        if (sum == 7) {
+            evalLoss(currentPlayer.getP());
+        } else if (sum == point) {
+            evalWin(currentPlayer.getP());
+        }
+    }
+
+    public void evalLoss(Player player){
+        console.println("\n*********\nYOU LOSE!\n*********\n");
+        evaluateBet(player, -bet);
+    }
+    public void evalWin(Player player){
+        console.println("\n*******************************\n" +
+                "WINNER WINNER CHICKEN DINNER!\n" +
+                "*******************************\n");
+        evaluateBet(player, bet);
     }
 
     public void greetPlayer(Player playa){
