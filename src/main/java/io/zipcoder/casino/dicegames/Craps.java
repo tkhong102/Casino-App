@@ -15,12 +15,12 @@ public class Craps extends DiceGame implements Gamble {
 
     public Craps() {
         readyPlayers();
-        run();
+        runGame();
     }
     //for test purposes
     public Craps(ArrayList<CrapsPlayer> playerz){
         crapsPlayers.addAll(playerz);
-        run();
+        runGame();
     }
 
     public void readyPlayers() {
@@ -29,7 +29,8 @@ public class Craps extends DiceGame implements Gamble {
         }
     }
 
-    public void run(){
+    @Override
+    public void runGame(){
         for(int i = 0; i < crapsPlayers.size(); i++){
             greetPlayer(crapsPlayers.get(i).getP());
             play(crapsPlayers.get(i));
@@ -107,4 +108,7 @@ public class Craps extends DiceGame implements Gamble {
     public void promptEnterKey(String str){
         String input = console.getStringInput("\nPress \"ENTER\" to " + str);
     }
+
+    @Override
+    public void promptContinue(){};
 }

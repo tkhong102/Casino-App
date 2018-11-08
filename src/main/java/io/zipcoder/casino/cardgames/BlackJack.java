@@ -22,7 +22,7 @@ public class BlackJack extends CardGame implements Gamble {
     public BlackJack(){
         readyPlayers();
         dealCards(2);
-        run();
+        runGame();
     }
 
     public void readyPlayers() {
@@ -31,7 +31,8 @@ public class BlackJack extends CardGame implements Gamble {
         }
     }
 
-    public void run(){
+    @Override
+    public void runGame(){
         for(int i = 0; i < blackJackPlayers.size(); i++){
             play(blackJackPlayers.get(i),blackJackPlayers.get(i).getBet());
         }
@@ -71,7 +72,7 @@ public class BlackJack extends CardGame implements Gamble {
 
             while (getSum(currentPlayer.getHand()) < 21) {
                 if (hitOrStand.equalsIgnoreCase("H")) {
-                    dealCard(currentPlayer,1);
+                    dealCards(currentPlayer,1);
                 } else if (hitOrStand.equalsIgnoreCase("S")) {
                     break;
                 } else {
@@ -114,7 +115,7 @@ public class BlackJack extends CardGame implements Gamble {
         }
 
 }
-
+    @Override
     public void dealCards(int numberOfCards) {
 
         for(BlackJackPlayer p: blackJackPlayers){ //deal 2 cards to each player
@@ -125,10 +126,12 @@ public class BlackJack extends CardGame implements Gamble {
         }
     }
 
-    public void dealCard(BlackJackPlayer p, int numberOfCards) {
+    @Override
+    public void dealCards(Player p, int numberOfCards) {
+        BlackJackPlayer bjp = (BlackJackPlayer) p;
         for (int i = 0; i < numberOfCards; i++) {
             Card card = deck.removeFirst();
-            p.getHand().add(card);
+            bjp.getHand().add(card);
         }
     }
 
@@ -175,6 +178,9 @@ public class BlackJack extends CardGame implements Gamble {
         Console.println("Dealer drew a " + newCard.getCardValue() + " of " + newCard.getSuit());
         dealerHand.add(newCard);
     }
+
+    @Override
+    public void promptContinue(){};
 
 
 }

@@ -21,6 +21,11 @@ public class GoFish extends CardGame {
         runGame();
     }
 
+    @Override
+    public void runGame(){
+
+    }
+
     public void readyPlayers() {
         for (Player player : Players.getInstance().getPlayers()) {
             goFishPlayers.add(new GoFishPlayer(player));
@@ -38,11 +43,17 @@ public class GoFish extends CardGame {
     }
 
     @Override
-    void dealCards(Player player, int numberOfCards) {
-        super.dealCards(player, numberOfCards);
+    public void dealCards(Player player, int numberOfCards) {
         // dealPile = dealPile - numberOfCards;
     }
 
+    @Override
+    public void dealCards(int numberOfCards) {
+
+    }
+
+    @Override
+    public void promptContinue(){};
     //
     public void updateDrawPile() {
 

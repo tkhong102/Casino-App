@@ -1,11 +1,13 @@
 package io.zipcoder.casino.utilities;
 
 public abstract class Game {
-    abstract void promptContinue();
+    String className = this.getClass().getName();
 
-    abstract void runGame();
+    public abstract void promptContinue();
 
-    abstract void endGame();
+    public abstract void runGame();
 
-
+    public String getClassName() {
+        return className;
+    }
 }
