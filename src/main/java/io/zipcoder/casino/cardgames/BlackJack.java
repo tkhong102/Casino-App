@@ -21,6 +21,7 @@ public class BlackJack extends CardGame implements Gamble {
     public BlackJack(){
         announceGameChoice();
         readyPlayers();
+        placePlayerBets();
         dealCards(2);
         runGame();
     }
@@ -41,8 +42,6 @@ public class BlackJack extends CardGame implements Gamble {
     boolean continueGame = true;
     public void play(BlackJackPlayer currentPlayer, long bet) {
         boolean dealerWins = false;
-
-        placePlayerBets();
 
         evalBlackjack(); // all players evaluate hand for blackjack. Winners are paid out and removed.
         dealerWins = dealerCheck(); //TO ADD: if both player and dealer have blackjack, player keeps bet
