@@ -50,7 +50,7 @@ public class BlackJack extends CardGame implements Gamble {
         while (continueGame) {
             dealerDraw();
 
-            Console.println("Dealer is showing a " + dealerHand.get(0).getCard()); // dealer reveals upcard
+            Console.println("\nDealer is showing a " + dealerHand.get(0).getCard()); // dealer reveals upcard
 
             playersTurn();
 
@@ -145,7 +145,7 @@ public class BlackJack extends CardGame implements Gamble {
         }
 
         if (getSum(dealerHand) > 21) {
-            Console.println("Dealer busted. You all win.");
+            Console.println("\nDealer busted. You all win!");
             payoutAll();
             return false;
         }
@@ -159,7 +159,7 @@ public class BlackJack extends CardGame implements Gamble {
         for (int i = 0; i < blackJackPlayers.size(); i++) {
             currentPlayer = blackJackPlayers.get(i);
 
-            Console.println(String.format("%s, you're up!", currentPlayer.getP().getName()));
+            Console.println(String.format("\n%s, you're up!", currentPlayer.getP().getName()));
             displaySumPlayerHand(currentPlayer);
 
             hitOrStand(currentPlayer);
@@ -168,7 +168,7 @@ public class BlackJack extends CardGame implements Gamble {
 
     private boolean playerBust(BlackJackPlayer currentPlayer) {
         if (getSum(currentPlayer.getHand()) > 21) {
-            Console.println(currentPlayer.getP().getName() + " busted. House wins.");
+            Console.println("\n"+currentPlayer.getP().getName() + " busted. House wins.");
 //            blackJackPlayers.remove(currentPlayer);
             return false;
         }
@@ -182,11 +182,11 @@ public class BlackJack extends CardGame implements Gamble {
     public void hitOrStand(BlackJackPlayer currentPlayer) {
 
         while (getSum(currentPlayer.getHand()) < 21) {
-            String hitOrStand = Console.getStringInput(currentPlayer.getP().getName() + ", do you want to Hit or Stand?\nEnter H for Hit or S for Stand");
+            String hitOrStand = Console.getStringInput(String.format("\n%s, do you want to Hit or Stand?\nEnter H for Hit or S for Stand", currentPlayer.getP().getName()));
 
             if (hitOrStand.equalsIgnoreCase("H")) {
                 dealCards(currentPlayer, 1);
-                Console.println(currentPlayer.getP().getName() + ", you have been dealt %s.", currentPlayer.getHand().get(currentPlayer.getHand().size() - 1).getCard());
+                Console.println( "\n%s, you have been dealt %s.", currentPlayer.getP().getName(), currentPlayer.getHand().get(currentPlayer.getHand().size() - 1).getCard());
                 displaySumPlayerHand(currentPlayer);
                 playerBust(currentPlayer);
             } else if (hitOrStand.equalsIgnoreCase("S")) {
@@ -263,7 +263,7 @@ public class BlackJack extends CardGame implements Gamble {
             }
             cardSum = cardSum + cardValue;
         }
-        if (cardHand.size() == 2 && ace && cardSum + 10 == 21) {
+        if (cardHand.size() == 2 && ace && cardSum + 10 <= 21) {
             cardSum = cardSum + 10;
         }
         return cardSum;

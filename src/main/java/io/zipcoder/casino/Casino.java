@@ -15,9 +15,11 @@ public class Casino {
     Console console = new Console();
     boolean continueGame = true;
     int numberOfPlayers = 0;
+    boolean kickedOut = false;
 
     public static void main(String[] args) {
         Casino casino = new Casino();
+        Console console = new Console();
 
 //before game
         casino.enterPlayers();
@@ -29,6 +31,7 @@ public class Casino {
 //after game
             casino.printBalance();
             casino.bootPlayer();
+            if (casino.kickedOut) console.kickedOut();
 
             casino.continueGame = casino.promptContinue();
         }
@@ -88,6 +91,7 @@ public class Casino {
             console.println(players.getPlayers().get(i).getName() + ", YOU ARE BROKE. GTFO, PEASANT.\n");
             players.removePlayer(players.getPlayers().get(i));
             i = i-1;
+            kickedOut = true;
           }
         }
         this.numberOfPlayers = players.getPlayers().size();
