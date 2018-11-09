@@ -1,5 +1,6 @@
 package io.zipcoder.casino.dicegames;
 
+import io.zipcoder.casino.player.BlackJackPlayer;
 import io.zipcoder.casino.utilities.Console;
 import io.zipcoder.casino.utilities.interfaces.Gamble;
 import io.zipcoder.casino.player.CrapsPlayer;
@@ -15,6 +16,7 @@ public class Craps extends DiceGame implements Gamble {
     long bet;
 
     public Craps() {
+        announceGameChoice();
         readyPlayers();
         //promptBets();
         runGame();
