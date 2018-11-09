@@ -13,19 +13,17 @@ public class PlayersTest {
     Player player3 = new Player("Beauseph");
 
 
-    @Before
-    public void getInstance() {
-        Players.getInstance().addPlayers(player1,player2,player3);
-    }
-
     @Test
     public void addPlayer() {
+        Players.getInstance().addPlayers(player1,player2);
+        Players.getInstance().addPlayer(player3);
         Assert.assertTrue(Players.getInstance().getPlayers().size() == 3);
     }
 
     @Test
     public void removePlayer() {
-        Players.getInstance().removePlayer(player1);
+        Players.getInstance().addPlayers(player1,player2,player3);
+        Players.getInstance().removePlayer(player3);
         Assert.assertTrue(Players.getInstance().getPlayers().size() == 2);
     }
 }

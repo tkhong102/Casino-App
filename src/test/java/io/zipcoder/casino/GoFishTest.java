@@ -46,28 +46,6 @@ public class GoFishTest {
     }
 
     @Test
-    public void getStartingCardsTest() {
-        //given
-        ArrayList<GoFishPlayer> fishers = new ArrayList<>();
-        GoFishPlayer fisher1 = new GoFishPlayer(new Player("Jae", 0));
-        GoFishPlayer fisher2 = new GoFishPlayer(new Player("Thuy", 2));
-        GoFishPlayer fisher3 = new GoFishPlayer(new Player("Ned", 0));
-        fishers.add(fisher1);
-        fishers.add(fisher2);
-        fishers.add(fisher3);
-        int expectOutput = 7;
-        int numberOfPlayers = fishers.size();
-
-        //when
-
-
-        //then
-        int actualOutput = fisher1.getHand().size();
-        Assert.assertEquals(expectOutput, actualOutput);
-
-    }
-
-    @Test
     public void dealCards() {
         //given
 

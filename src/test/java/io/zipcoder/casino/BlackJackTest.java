@@ -34,21 +34,21 @@ public class BlackJackTest {
         Assert.assertEquals(expected, actual);
     }
 
-    @Test
-    public void testDealerDraw(){
-    blackJack.dealerDraw();
-    int expected = 2;
-    int actual = dealerHand.size();
-    Assert.assertEquals(expected,actual);
-    }
+//    @Test
+//    public void testDealerDraw(){
+//    blackJack.dealerDraw();
+//    int expected = 2;
+//    int actual = dealerHand.size();
+//    Assert.assertEquals(expected,actual);
+//    }
 
-    @Test
-    public void testDealCards(){
-        blackJack.dealCards(2);
-        int expected = 50;
-        int actual = blackJack.getDeck().size();
-        Assert.assertEquals(expected, actual);
-    }
+//    @Test
+//    public void testDealCards(){
+//        blackJack.dealCards(2);
+//        int expected = 50;
+//        int actual = blackJack.getDeck().size();
+//        Assert.assertNotNull();
+//    }
 
 
     @Test
