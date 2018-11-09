@@ -57,7 +57,6 @@ public class Craps extends DiceGame implements Gamble {
         int sum;
         promptEnterKey("roll dice");
         printRollSum(sum = rollDie(2));
-
         simulateCraps(currentPlayer, sum);
     }
 
@@ -118,7 +117,6 @@ public class Craps extends DiceGame implements Gamble {
 
     public void promptEnterKey(String str){
         String input = console.getStringInput("\n>> " +
-
                 "Press \"ENTER\" to " + str);
     }
     public void print(){
