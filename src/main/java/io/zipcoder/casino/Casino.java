@@ -13,18 +13,21 @@ public class Casino {
     private Game game;
     Players players = Players.getInstance();
     Console console = new Console();
+    boolean continueGame = true;
 
     public static void main(String[] args) {
         Casino casino = new Casino();
 
 //before game
         casino.enterPlayers();
-        //ADD LOOP
-        casino.chooseTable();
+        while (casino.continueGame == true) {
+            //ADD LOOP
+            casino.chooseTable();
 
 //after game
-        casino.printBalance();
-        casino.bootPlayer();
+            casino.printBalance();
+            casino.bootPlayer();
+        }
     }
 
     public void enterPlayers() {
@@ -36,7 +39,7 @@ public class Casino {
 
     private String getPlayerNames(int numberOfPlayers, String playerNames) {
         for (int i = 1; i <= numberOfPlayers; i++) {
-          String nameOfPlayer = console.getStringInput("PLAYER " + i + ": WHAT IS YOUR NAME?\n");
+          String nameOfPlayer = console.getStringInput("PLAYER " + i + ": WHAT IS YOUR NAME?");
           players.addPlayer(new Player(nameOfPlayer));
           playerNames += nameOfPlayer + ", ";
         }
@@ -85,6 +88,11 @@ public class Casino {
       for (Player player : players.getPlayers()){
         console.println(String.format(player.getName() + " has " + player.getChipBalance() + " chips.\n"));
       }
+    }
+
+    public void promptContinue() {
+        String continueChoice = console.getStringInput("Would you like to play another game? Y/N");
+        if (continueChoice.equalsIgnoreCase("n")) continueGame = false;
     }
 
 
