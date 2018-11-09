@@ -23,7 +23,11 @@ public class Craps extends DiceGame implements Gamble {
     //for test purposes
     public Craps(ArrayList<CrapsPlayer> playerz){
         crapsPlayers.addAll(playerz);
-        runGame();
+        //runGame();
+    }
+
+    public void setBet(long bet){
+        this.bet = bet;
     }
 
     public void readyPlayers() {
