@@ -82,7 +82,6 @@ public class Casino {
     }
 
     public void printBalance() {
-      console.println("FYI guys:\n");
       for (Player player : players.getPlayers()){
         console.println(String.format(player.getName() + " has " + player.getChipBalance() + " chips.\n"));
       }

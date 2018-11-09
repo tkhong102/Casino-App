@@ -38,8 +38,8 @@ public class BlackJack extends CardGame implements Gamble {
         }
     }
 
+    boolean continueGame = true;
     public void play(BlackJackPlayer currentPlayer, long bet) {
-        boolean continueGame = true;
         boolean dealerWins = false;
 
         placePlayerBets();
@@ -55,10 +55,13 @@ public class BlackJack extends CardGame implements Gamble {
 
             playersTurn();
 
+            if (blackJackPlayers.size() < 1) continueGame = false;
+
             continueGame = dealersTurn(); // IMPLEMENT: if dealer loses, all players should receive payout
 
             evalWinner();
 
+            continueGame = false;
         }
 
         if (dealerWins == true) {
@@ -108,15 +111,15 @@ public class BlackJack extends CardGame implements Gamble {
     public boolean evalWinner() {
         for (BlackJackPlayer currentPlayer : blackJackPlayers) {
             if (getSum(dealerHand) == getSum(currentPlayer.getHand())) {
-                Console.println("Dealer wins on a tie.");
+                Console.println(String.format("Against %s's hand, dealer wins on a tie.", currentPlayer.getP().getName()));
                 evaluateBet(currentPlayer, -currentPlayer.getBet());
                 return false;
             } else if (getSum(dealerHand) <= 21 && getSum(dealerHand) > getSum(currentPlayer.getHand())) {
-                Console.println("Dealer wins.");
+                Console.println(String.format("Against %s's hand, dealer wins."), currentPlayer.getP().getName());
                 evaluateBet(currentPlayer, -currentPlayer.getBet());
                 return false;
             } else {
-                Console.println("You win!");
+                Console.println(String.format("%s, you win!", currentPlayer.getP().getName()));
                 evaluateBet(currentPlayer, currentPlayer.getBet());
                 return false;
             }
@@ -136,10 +139,10 @@ public class BlackJack extends CardGame implements Gamble {
         if (getSum(dealerHand) > 21) {
             Console.println("Dealer busted. You win.");
             payoutAll();
-            return true;
+            return false;
         }
 
-        return false;
+        return true;
     }
 
     public void playersTurn() {
@@ -149,26 +152,36 @@ public class BlackJack extends CardGame implements Gamble {
             currentPlayer = blackJackPlayers.get(i);
 
             Console.println(String.format("%s, you're up!", currentPlayer.getP().getName()));
-            Console.println("You have: " + currentPlayer.getHand().display() + "\nYour sum is " + getSum(currentPlayer.getHand()));
+            displaySumPlayerHand(currentPlayer);
 
             hitOrStand(currentPlayer);
-
-            if (getSum(currentPlayer.getHand()) > 21){
-
-                Console.println("You busted. House wins.");
-                dealerCollect(currentPlayer);
-                blackJackPlayers.remove(currentPlayer);
-
-            }
         }
     }
 
+    private boolean playerBust(BlackJackPlayer currentPlayer) {
+        if (getSum(currentPlayer.getHand()) > 21){
+            Console.println(currentPlayer.getP().getName() + " busted. House wins.");
+            dealerCollect(currentPlayer);
+            blackJackPlayers.remove(currentPlayer);
+            return false;
+        }
+        return true;
+    }
+
+    private void displaySumPlayerHand(BlackJackPlayer currentPlayer) {
+        Console.println(currentPlayer.getP().getName() + ", you have: " + currentPlayer.getHand().display() + "\nThis hand is worth " + getSum(currentPlayer.getHand()));
+    }
+
     public void hitOrStand(BlackJackPlayer currentPlayer) {
-        String hitOrStand = Console.getStringInput("Do you want to Hit or Stand? \n Enter H for Hit or S for Stand");
 
         while (getSum(currentPlayer.getHand()) < 21) {
+            String hitOrStand = Console.getStringInput(currentPlayer.getP().getName() + ", do you want to Hit or Stand?\nEnter H for Hit or S for Stand");
+
             if (hitOrStand.equalsIgnoreCase("H")) {
                 dealCards(currentPlayer, 1);
+                Console.println(currentPlayer.getP().getName() + ", you have been dealt %s.", currentPlayer.getHand().get(currentPlayer.getHand().size()-1).getCard());
+                displaySumPlayerHand(currentPlayer);
+                continueGame = playerBust(currentPlayer);
             } else if (hitOrStand.equalsIgnoreCase("S")) {
                 break;
             } else {
