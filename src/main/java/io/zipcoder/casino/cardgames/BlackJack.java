@@ -248,7 +248,6 @@ public class BlackJack extends CardGame implements Gamble {
 
 
     public Card drawCard() {
-
         Card card = deck.removeFirst();
         return card;
     }
