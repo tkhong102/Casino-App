@@ -17,6 +17,6 @@ public abstract class Game {
 
     protected void announceGameChoice() {
         Console console = new Console();
-        console.println("Welcome to %s\n", this.getClassName());
+        console.println("\nWelcome to %s\n", this.getClassName());
     }
 }

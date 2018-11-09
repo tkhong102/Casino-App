@@ -139,12 +139,14 @@ public class Console {
     }
 
     public Integer getGameChoice() {
-        println("GAME LIST\n");
+        println("\n================");
+        println("GAME LIST");
+        println("----------------");
         println("1. CRAPS\n");
         println("2. BLACK JACK\n");
-        println("3. GO FISH\n");
-        println("CHOOSE TABLE\n");
-        return getIntegerInput("");
+        println("3. GO FISH");
+        println("================");
+        return getIntegerInput("\nCHOOSE TABLE");
     }
 
 
