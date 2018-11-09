@@ -11,7 +11,7 @@ import java.util.*;
 public class CrapsTest {
 
     @Test
-    public void testCraps(){
+    public void testPrintBalance(){
         //Given
         ArrayList<CrapsPlayer> playerz = new ArrayList<>();
         CrapsPlayer cplayer1 = new CrapsPlayer(new Player("Bob",100),5);
@@ -40,7 +40,7 @@ public class CrapsTest {
         playa.setChipBalance(100);
         playerz.add(playa);
         Craps craps = new Craps(playerz);
-        
+
         craps.setBet(5);
         craps.evalWin(playa);
         long exp = 105;
