@@ -19,6 +19,7 @@ public class BlackJack extends CardGame implements Gamble {
     CardHand dealerHand = new CardHand();
 
     public BlackJack(){
+        announceGameChoice();
         readyPlayers();
         dealCards(2);
         runGame();
@@ -32,7 +33,6 @@ public class BlackJack extends CardGame implements Gamble {
 
     @Override
     public void runGame(){
-        announceGameChoice();
         for(int i = 0; i < blackJackPlayers.size(); i++){
             play(blackJackPlayers.get(i),blackJackPlayers.get(i).getBet());
         }
