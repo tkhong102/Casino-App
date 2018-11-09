@@ -14,12 +14,14 @@ public class Casino {
     Players players = Players.getInstance();
     Console console = new Console();
     boolean continueGame = true;
+    int numberOfPlayers = 0;
 
     public static void main(String[] args) {
         Casino casino = new Casino();
 
 //before game
         casino.enterPlayers();
+
         while (casino.continueGame == true) {
             //ADD LOOP
             casino.chooseTable();
@@ -27,11 +29,13 @@ public class Casino {
 //after game
             casino.printBalance();
             casino.bootPlayer();
+
+            casino.continueGame = casino.promptContinue();
         }
     }
 
     public void enterPlayers() {
-        int numberOfPlayers = getNumberOfPlayers();
+        numberOfPlayers = getNumberOfPlayers();
         String playerNames = "";
         playerNames = getPlayerNames(numberOfPlayers, playerNames);
         console.println("\n"+ playerNames + "THANK YOU FOR JOINING US");
@@ -80,10 +84,11 @@ public class Casino {
     public void bootPlayer() {
         // If player balance is 0, player game over
         for (int i = 0; i < players.getPlayers().size(); i++) {
-          if(players.getPlayers().get(i).getChipBalance()<=0){
-            console.println(players.getPlayers().get(i).getName() + ", YOU ARE BROKE. GTFO, PEASANT.");
+          if(players.getPlayers().get(i).getChipBalance()<1){
+            console.println(players.getPlayers().get(i).getName() + ", YOU ARE BROKE. GTFO, PEASANT.\n");
             players.removePlayer(players.getPlayers().get(i));
           }
+          this.numberOfPlayers = players.getPlayers().size();
         }
     }
 
@@ -93,9 +98,12 @@ public class Casino {
       }
     }
 
-    public void promptContinue() {
-        String continueChoice = console.getStringInput("Would you like to play another game? Y/N");
-        if (continueChoice.equalsIgnoreCase("n")) continueGame = false;
+    public boolean promptContinue() {
+        if (numberOfPlayers > 0) {
+            String continueChoice = console.getStringInput("Would you like to play another game? Y/N");
+            if (continueChoice.equalsIgnoreCase("n")) return false;
+        } else return false;
+        return true;
     }
 
 
