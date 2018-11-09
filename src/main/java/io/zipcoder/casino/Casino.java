@@ -34,12 +34,13 @@ public class Casino {
         int numberOfPlayers = getNumberOfPlayers();
         String playerNames = "";
         playerNames = getPlayerNames(numberOfPlayers, playerNames);
-        console.println(playerNames + "THANK YOU FOR JOINING US");
+        console.println("\n"+ playerNames + "THANK YOU FOR JOINING US");
     }
 
     private String getPlayerNames(int numberOfPlayers, String playerNames) {
+        console.println("");
         for (int i = 1; i <= numberOfPlayers; i++) {
-          String nameOfPlayer = console.getStringInput("\nPLAYER " + i + ": WHAT IS YOUR NAME?");
+          String nameOfPlayer = console.getStringInput("PLAYER " + i + ": WHAT IS YOUR NAME?");
           players.addPlayer(new Player(nameOfPlayer));
           playerNames += nameOfPlayer + ", ";
         }
