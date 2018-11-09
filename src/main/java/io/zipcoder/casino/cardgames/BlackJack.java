@@ -263,7 +263,7 @@ public class BlackJack extends CardGame implements Gamble {
 
     public void revealCard(){
         Card newCard = drawCard();
-        Console.println("Dealer drew a " + newCard.getCardValue() + " of " + newCard.getSuit());
+        Console.println("Dealer drew a " + newCard.getCardValue() + " of " + newCard.getSuit().getCardGraphic());
         dealerHand.add(newCard);
     }
 
