@@ -33,6 +33,7 @@ public class Craps extends DiceGame implements Gamble {
 
     @Override
     public void runGame(){
+        announceGameChoice();
         for(int i = 0; i < crapsPlayers.size(); i++){
             greetPlayer(crapsPlayers.get(i).getP());
             play(crapsPlayers.get(i));

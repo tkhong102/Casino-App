@@ -32,6 +32,7 @@ public class BlackJack extends CardGame implements Gamble {
 
     @Override
     public void runGame(){
+        announceGameChoice();
         for(int i = 0; i < blackJackPlayers.size(); i++){
             play(blackJackPlayers.get(i),blackJackPlayers.get(i).getBet());
         }
@@ -181,8 +182,8 @@ public class BlackJack extends CardGame implements Gamble {
         for (int i = 0; i < blackJackPlayers.size(); i++) {
             p = blackJackPlayers.get(i);
             if (getSum(p.getHand()) == 21) {
-                Console.println(p.getName() + ", you have " + p.getHand().display());
-                Console.println(p.getName() + ", you have blackjack. You win!");
+                Console.println(p.getP().getName() + ", you have " + p.getHand().display());
+                Console.println(p.getP().getName() + ", you have blackjack. You win!");
                 evaluateBet(p, p.getBet());
                 blackJackPlayers.remove(i);
             }
@@ -212,7 +213,7 @@ public class BlackJack extends CardGame implements Gamble {
     @Override
     public void placeBet(Player player) {
         BlackJackPlayer blackJackPlayer = (BlackJackPlayer) player;
-        long bet = Console.getLongInput("Please enter your bet.");
+        long bet = Console.getLongInput(String.format("%s, please enter your bet.", ((BlackJackPlayer) player).getP().getName()));
         blackJackPlayer.setBet(bet);
     }
 

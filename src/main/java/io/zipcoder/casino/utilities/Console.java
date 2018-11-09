@@ -1,5 +1,7 @@
 package io.zipcoder.casino.utilities;
 
+import io.zipcoder.casino.Casino;
+
 import java.awt.peer.SystemTrayPeer;
 import java.util.Scanner;
 
@@ -135,6 +137,15 @@ public class Console {
         println(prompt);
         double userInput = scanner.nextDouble() ;
         return userInput;
+    }
+
+    public Integer getGameChoice() {
+        println("GAME LIST\n");
+        println("1. CRAPS\n");
+        println("2. BLACK JACK\n");
+        println("3. GO FISH\n");
+        println("CHOOSE TABLE\n");
+        return getIntegerInput("");
     }
 
 
