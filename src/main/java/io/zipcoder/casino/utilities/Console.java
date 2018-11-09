@@ -104,7 +104,7 @@ public class Console {
 
     public static void printWcarrot(String output){
         System.out.println(output);
-        System.out.print(">");
+        System.out.print("> ");
     }
 
 

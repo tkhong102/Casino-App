@@ -17,6 +17,7 @@ public class CrapsTest {
         CrapsPlayer cplayer2 = new CrapsPlayer(new Player("Joe",100),20);
         CrapsPlayer cplayer3 = new CrapsPlayer(new Player("Will",100),12);
 
+        //When
         playerz.add(cplayer1);
         playerz.add(cplayer2);
         playerz.add(cplayer3);

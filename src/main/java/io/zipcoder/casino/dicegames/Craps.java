@@ -1,6 +1,5 @@
 package io.zipcoder.casino.dicegames;
 
-import io.zipcoder.casino.player.BlackJackPlayer;
 import io.zipcoder.casino.utilities.Console;
 import io.zipcoder.casino.utilities.interfaces.Gamble;
 import io.zipcoder.casino.player.CrapsPlayer;
@@ -18,6 +17,7 @@ public class Craps extends DiceGame implements Gamble {
     public Craps() {
         announceGameChoice();
         readyPlayers();
+        //promptBets();
         runGame();
     }
     //for test purposes
@@ -40,15 +40,8 @@ public class Craps extends DiceGame implements Gamble {
         }
     }
 
-    public void placeBet() {
-        this.bet = console.integerInputSameLine("Enter your bet: ");
-    }
-
-    @Override
     public void placeBet(Player player) {
-        BlackJackPlayer blackJackPlayer = (BlackJackPlayer) player;
-        long bet = Console.getLongInput("Please enter your bet.");
-        blackJackPlayer.setBet(bet);
+        bet = console.integerInputSameLine("Enter your bet: ");
     }
 
     public void evaluateBet(Player player, long payout) {
@@ -56,26 +49,32 @@ public class Craps extends DiceGame implements Gamble {
     }
 
     public void play(CrapsPlayer currentPlayer) {
-        placeBet();
-
-        promptEnterKey("roll dice");
-
+        placeBet(currentPlayer);
         int sum = rollDie(2);
 
+        promptEnterKey("roll dice");
         console.println("Your roll sum equals: " + sum);
 
+        simulateCraps(currentPlayer, sum);
+    }
+
+    private void simulateCraps(CrapsPlayer currentPlayer, int sum) {
         if (sum == 7 || sum == 11) {
             evalWin(currentPlayer.getP());
         } else if (sum == 2 || sum == 3 || sum == 12) {
             evalLoss(currentPlayer.getP());
         } else {
-            int point = sum;
-            do {
-                printRollAgain(point);
-                sum = rollDie(2);
-                evalReRoll(currentPlayer, sum , point);
-            } while (sum != point && sum != 7);
+            rollForPoint(currentPlayer, sum);
         }
+    }
+
+    private void rollForPoint(CrapsPlayer currentPlayer, int sum) {
+        int point = sum;
+        do {
+            printRollAgain(point);
+            sum = rollDie(2);
+            evalReRoll(currentPlayer, sum , point);
+        } while (sum != point && sum != 7);
     }
 
     public void print(){
@@ -85,9 +84,8 @@ public class Craps extends DiceGame implements Gamble {
     }
 
     public void printRollAgain(int point){
-        console.println("\n--------------------");
-        console.println("Point to roll for: " + point);
-        console.println("--------------------");
+        console.println("\n--------------------" +
+                "\nPoint to roll for: " + point + "\n--------------------");
         promptEnterKey("roll again");
     }
 
@@ -120,5 +118,5 @@ public class Craps extends DiceGame implements Gamble {
     }
 
     @Override
-    public void promptContinue(){};
+    public void promptContinue(){}
 }
