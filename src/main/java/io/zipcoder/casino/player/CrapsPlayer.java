@@ -20,4 +20,5 @@ public class CrapsPlayer extends Player {
     public long getBet() {
         return bet;
     }
+    public void setBet(long bet) { this.bet = bet;}
 }

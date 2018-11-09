@@ -13,18 +13,21 @@ public class Casino {
     private Game game;
     Players players = Players.getInstance();
     Console console = new Console();
+    boolean continueGame = true;
 
     public static void main(String[] args) {
         Casino casino = new Casino();
 
 //before game
         casino.enterPlayers();
-        //ADD LOOP
-        casino.chooseTable();
+        while (casino.continueGame == true) {
+            //ADD LOOP
+            casino.chooseTable();
 
 //after game
-        casino.printBalance();
-        casino.bootPlayer();
+            casino.printBalance();
+            casino.bootPlayer();
+        }
     }
 
     public void enterPlayers() {
@@ -36,7 +39,7 @@ public class Casino {
 
     private String getPlayerNames(int numberOfPlayers, String playerNames) {
         for (int i = 1; i <= numberOfPlayers; i++) {
-          String nameOfPlayer = console.getStringInput("PLAYER " + i + ": WHAT IS YOUR NAME?\n");
+          String nameOfPlayer = console.getStringInput("PLAYER " + i + ": WHAT IS YOUR NAME?");
           players.addPlayer(new Player(nameOfPlayer));
           playerNames += nameOfPlayer + ", ";
         }
@@ -49,55 +52,26 @@ public class Casino {
     }
 
     public void chooseTable() {
+        Game game = null;
 
-      console.println("GAME LIST\n");
-      console.println("1. CRAPS\n");
-      console.println("2. BLACK JACK\n");
-      console.println("3. GO FISH\n");
-      console.println("CHOOSE TABLE\n");
-      Integer number=console.getIntegerInput("") ;
-       switch(number){
-         case 1:
-             runGame(new Craps());
-             break;
-        case 2:
-             runGame(new BlackJack());
-             break;
-        case 3:
-             runGame(new GoFish());
-             break;
-       }        
+        Integer gameChoice = console.getGameChoice();
+
+        switch(gameChoice){
+            case 1:
+                game = new Craps();
+                break;
+            case 2:
+                game = new BlackJack();
+                break;
+            case 3:
+                game = new GoFish();
+                break;
+        }
+        runGame(game);
      }
 
     private void runGame(Game game) {
-        console.println("WELCOME TO %s", game.getClassName());
         this.game = game;
-    }
-
-    public void confirmPlayers() {
-      boolean isConfirmed = false;
-      while(!isConfirmed){
-        console.println("Current Players: ");
-        for(Player player : players.getPlayers()){
-          console.println(player.getName());
-        }
-        Integer choice = console.getIntegerInput("Choose option:\n (1)Confirm Players\n (2)Add Player\n (3)Remove Player\n");
-        String name;
-        switch(choice){
-          case 1: isConfirmed = true;
-            break;
-          case 2: name = console.getStringInput("Enter name of player to add: ");
-                    players.addPlayer(new Player(name));
-            break;
-          case 3: name = console.getStringInput("Enter name of player to remove: ");
-                  for(Player player : players.getPlayers()){
-                    if(player.getName() == name)
-                      players.removePlayer(player);
-                  }
-            break;
-          default: break;
-        }
-      }
     }
 
     public void bootPlayer() {
@@ -111,10 +85,14 @@ public class Casino {
     }
 
     public void printBalance() {
-      console.println("FYI guys:\n");
       for (Player player : players.getPlayers()){
         console.println(String.format(player.getName() + " has " + player.getChipBalance() + " chips.\n"));
       }
+    }
+
+    public void promptContinue() {
+        String continueChoice = console.getStringInput("Would you like to play another game? Y/N");
+        if (continueChoice.equalsIgnoreCase("n")) continueGame = false;
     }
 
 
