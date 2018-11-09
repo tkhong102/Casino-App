@@ -39,7 +39,7 @@ public class Casino {
 
     private String getPlayerNames(int numberOfPlayers, String playerNames) {
         for (int i = 1; i <= numberOfPlayers; i++) {
-          String nameOfPlayer = console.getStringInput("PLAYER " + i + ": WHAT IS YOUR NAME?");
+          String nameOfPlayer = console.getStringInput("\nPLAYER " + i + ": WHAT IS YOUR NAME?");
           players.addPlayer(new Player(nameOfPlayer));
           playerNames += nameOfPlayer + ", ";
         }
@@ -47,8 +47,10 @@ public class Casino {
     }
 
     private int getNumberOfPlayers() {
-        return console.getIntegerInput("WELCOME TO EPSILON CASINO, CALLED \"ALMOST A CASINO\" ON YELP\n" +
-                  "PLEASE ENTER A NUMBER OF PLAYERS.");
+        return console.getIntegerInput("*********************************\n" +
+                "    WELCOME TO EPSILON CASINO\n---------------------------------\n" +
+                "CALLED \"ALMOST A CASINO\" ON YELP\n*********************************\n" +
+                "\nPLEASE ENTER A NUMBER OF PLAYERS.");
     }
 
     public void chooseTable() {
