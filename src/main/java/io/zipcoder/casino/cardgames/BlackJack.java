@@ -45,7 +45,7 @@ public class BlackJack extends CardGame implements Gamble {
         Console.println("The dealer is dealing cards to the players.");
 
         for (BlackJackPlayer p: this.blackJackPlayers){ //gets bet from each player
-            placeBet();
+            placeBet(p);
         }
 
         dealerHand.add(deck.removeFirst());
@@ -167,7 +167,7 @@ public class BlackJack extends CardGame implements Gamble {
         }
     }
 
-    public void placeBet() {
+    public void placeBet(Player player) {
         this.bet = Console.getLongInput("Please enter your bet.");
     }
 

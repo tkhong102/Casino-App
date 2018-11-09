@@ -16,6 +16,7 @@ public class Craps extends DiceGame implements Gamble {
 
     public Craps() {
         readyPlayers();
+        //promptBets();
         runGame();
     }
     //for test purposes
@@ -39,7 +40,7 @@ public class Craps extends DiceGame implements Gamble {
     }
 
     public void placeBet(Player player) {
-        this.bet = console.integerInputSameLine("Enter your bet: ");
+        bet = console.integerInputSameLine("Enter your bet: ");
     }
 
     public void evaluateBet(Player player, long payout) {
@@ -83,7 +84,7 @@ public class Craps extends DiceGame implements Gamble {
 
     public void printRollAgain(int point){
         console.println("\n--------------------" +
-                "\nPoint to roll for: " + point + "--------------------");
+                "\nPoint to roll for: " + point + "\n--------------------");
         promptEnterKey("roll again");
     }
 
