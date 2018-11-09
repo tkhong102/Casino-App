@@ -50,10 +50,9 @@ public class Craps extends DiceGame implements Gamble {
 
     public void play(CrapsPlayer currentPlayer) {
         placeBet(currentPlayer);
-        int sum = rollDie(2);
-
+        int sum;
         promptEnterKey("roll dice");
-        printRollSum(sum);
+        printRollSum(sum = rollDie(2));
 
         simulateCraps(currentPlayer, sum);
     }
@@ -75,12 +74,6 @@ public class Craps extends DiceGame implements Gamble {
             sum = rollDie(2);
             evalReRoll(currentPlayer, sum , point);
         } while (sum != point && sum != 7);
-    }
-
-    public void print(){
-        for(int i = 0; i < crapsPlayers.size(); i++){
-            System.out.println(crapsPlayers.get(i).getP().getChipBalance());
-        }
     }
 
     public void printRollAgain(int point){
@@ -107,6 +100,7 @@ public class Craps extends DiceGame implements Gamble {
         console.println("\n*********\nYOU LOSE!\n*********\n");
         evaluateBet(player, -bet);
     }
+
     public void evalWin(Player player){
         console.println("\n*******************************\n" +
                 "WINNER WINNER CHICKEN DINNER!\n" +
@@ -120,7 +114,13 @@ public class Craps extends DiceGame implements Gamble {
 
     public void promptEnterKey(String str){
         String input = console.getStringInput("\n>> " +
+
                 "Press \"ENTER\" to " + str);
+    }
+    public void print(){
+        for(int i = 0; i < crapsPlayers.size(); i++){
+            System.out.println(crapsPlayers.get(i).getP().getChipBalance());
+        }
     }
 
     @Override

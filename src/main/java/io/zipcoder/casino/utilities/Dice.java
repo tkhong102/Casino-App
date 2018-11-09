@@ -7,6 +7,7 @@ package io.zipcoder.casino.utilities;
     public class Dice {
         public int dieCount;
         private ArrayList<Integer> lastRoll = new ArrayList<Integer>();
+        Console console = new Console();
 
         private HashMap<Integer, Character> diceGraphics = new HashMap<Integer, Character>() {{
             put(1,'⚀');
@@ -21,12 +22,12 @@ package io.zipcoder.casino.utilities;
             return diceGraphics.get(roll);
         }
 
-        public String getLastRollGraphic() {
+        public void getLastRollGraphic() {
             String lastRollGraphic = "";
             for (Integer roll : lastRoll) {
                 lastRollGraphic += getDieGraphic(roll) + " ";
             }
-            return lastRollGraphic;
+            console.println("------------------------\nRoll: " + lastRollGraphic);
         }
 
         public Dice(int dieCount) {
