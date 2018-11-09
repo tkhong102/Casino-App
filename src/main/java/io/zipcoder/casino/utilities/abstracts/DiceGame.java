@@ -9,6 +9,7 @@ public abstract class DiceGame extends Game {
     public int rollDie(int num) {
         Dice dice = new Dice(num);
         int sum = dice.tossAndSum();
+        dice.getLastRollGraphic();
         return sum;
     }
 
