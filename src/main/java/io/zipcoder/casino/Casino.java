@@ -87,9 +87,10 @@ public class Casino {
           if(players.getPlayers().get(i).getChipBalance()<1){
             console.println(players.getPlayers().get(i).getName() + ", YOU ARE BROKE. GTFO, PEASANT.\n");
             players.removePlayer(players.getPlayers().get(i));
+            i = i-1;
           }
-          this.numberOfPlayers = players.getPlayers().size();
         }
+        this.numberOfPlayers = players.getPlayers().size();
     }
 
     public void printBalance() {

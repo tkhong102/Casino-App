@@ -6,6 +6,11 @@ public class BlackJackPlayer extends Player{
     private CardHand hand;
     Player blackJackPlayer;
     private long bet;
+    boolean playerBust = false;
+
+    public boolean isPlayerBust() {
+        return playerBust;
+    }
 
     public long getBet() {
         return bet;
