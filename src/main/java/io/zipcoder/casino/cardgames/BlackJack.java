@@ -76,6 +76,11 @@ public class BlackJack extends CardGame implements Gamble {
         return false;
     }
 
+    public Deck getDeck() {
+        //for testing
+        return deck;
+    }
+
     public void dealerCollectAll() {
         for (BlackJackPlayer p: this.blackJackPlayers){ // collects bet from all players
             evaluateBet(p.getP(), -p.getBet());
@@ -230,7 +235,7 @@ public class BlackJack extends CardGame implements Gamble {
 
 
     public Card drawCard() {
-        // draws card from deck and adds it to "upcard" total
+
         Card card = deck.removeFirst();
         return card;
     }
